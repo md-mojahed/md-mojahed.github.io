@@ -1,0 +1,46 @@
+{
+    "name" : "Portfolio",
+    "short_name" : "Portfolio",
+    "start_url" : "/",
+    "display" : "standalone",
+    "background_color" : "#07081f",
+    "theme_color" : "#07081f",
+    "orientation" : "portrait-primary",
+    "icons" : [
+        {
+            "src" : "/icons/icon72.png",
+            "type": "image/png",
+            "sizes" : "72x72"
+        },
+        {
+            "src" : "/icons/icon96.png",
+            "type": "image/png",
+            "sizes" : "96x96"
+        },
+        {
+            "src" : "/icons/icon128.png",
+            "type": "image/png",
+            "sizes" : "128x128"
+        },
+        {
+            "src" : "/icons/icon148.png",
+            "type": "image/png",
+            "sizes" : "148x148"
+        },
+        {
+            "src" : "/icons/icon192.png",
+            "type": "image/png",
+            "sizes" : "192x192"
+        },
+        {
+            "src" : "/icons/icon384.png",
+            "type": "image/png",
+            "sizes" : "384x384"
+        },
+        {
+            "src" : "/icons/icon512.png",
+            "type": "image/png",
+            "sizes" : "512x512"
+        }
+    ]
+}
