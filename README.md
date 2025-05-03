@@ -52,7 +52,7 @@
     <img align="center" src="https://skillicons.dev/icons?i=gmail" />
   </a>
   <a href="https://www.upwork.com/freelancers/~017a04691e484ba543">
-    <img align="center" src="https://skillicons.dev/icons?i=upwork" />
+    <img align="center" src="https://skillicons.dev/icons?i=laravel" />
   </a>
 </p>
 
