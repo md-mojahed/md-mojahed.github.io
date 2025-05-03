@@ -42,17 +42,6 @@
 
 ---
 
-### 📌 Pinned Projects
-
-<a href="https://github.com/md-mojahed/eduplus">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=md-mojahed&repo=eduplus" />
-</a>
-<a href="https://github.com/md-mojahed/light-technologies">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=md-mojahed&repo=light-technologies" />
-</a>
-
----
-
 ### 🌐 Connect with Me
 
 <p align="left">
@@ -62,8 +51,8 @@
   <a href="mailto:mojahed.dev@gmail.com">
     <img align="center" src="https://skillicons.dev/icons?i=gmail" />
   </a>
-  <a href="https://www.facebook.com/md.mojahed.it">
-    <img align="center" src="https://skillicons.dev/icons?i=facebook" />
+  <a href="https://www.upwork.com/freelancers/~017a04691e484ba543">
+    <img align="center" src="https://skillicons.dev/icons?i=upwork" />
   </a>
 </p>
 
