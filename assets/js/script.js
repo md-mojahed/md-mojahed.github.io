@@ -32,42 +32,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Mobile menu toggle
+    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
     const mobileMenuLinks = document.querySelectorAll('#mobile-menu .nav-link');
 
-    mobileMenuBtn.addEventListener('click', function () {
+    function toggleMobileMenu() {
         mobileMenu.classList.toggle('active');
+        mobileMenuBackdrop.classList.toggle('active');
 
         const icon = mobileMenuBtn.querySelector('i');
         if (mobileMenu.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-xmark');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
         } else {
             icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
+            document.body.style.overflow = ''; // Re-enable scrolling
         }
-    });
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Close mobile menu on link click
     mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            mobileMenu.classList.remove('active');
-
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        });
+        link.addEventListener('click', toggleMobileMenu);
     });
 
-    // Click outside to close mobile menu
-    document.addEventListener('click', function (event) {
-        if (mobileMenu.classList.contains('active') && event.target === mobileMenu) {
-            mobileMenu.classList.remove('active');
+    // Close mobile menu when clicking on backdrop
+    mobileMenuBackdrop.addEventListener('click', toggleMobileMenu);
 
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
+    // Close mobile menu on ESC key press
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
         }
     });
 

@@ -147,21 +147,26 @@ section {
 #mobile-menu-btn {
   background: none;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--dark);
   cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  position: relative;
 }
 
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 75%;
+  width: 280px; /* Fixed width for mobile menu */
+  max-width: 80%; /* Maximum width */
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
+  background: var(--light);
   z-index: 1000;
-  transition: var(--transition);
+  transition: all 0.3s ease-in-out;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
 .mobile-menu.active {
@@ -171,18 +176,48 @@ section {
 .mobile-menu-content {
   height: 100%;
   width: 100%;
-  background: var(--light);
-  padding: 80px 30px;
+  padding: 80px 20px 30px;
   display: flex;
   flex-direction: column;
 }
 
 .mobile-menu .nav-link {
   display: block;
-  font-size: 1.1rem;
-  padding: 15px 0;
+  font-size: 1rem;
+  padding: 12px 0;
   margin: 0;
+  color: var(--dark);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu .nav-link:hover {
+  color: var(--primary);
+}
+
+.mobile-menu .btn-hire {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Add backdrop when menu is active */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-backdrop.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Hero Section */
