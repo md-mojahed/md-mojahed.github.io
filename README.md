@@ -1,5 +1,5 @@
 <h1 align="center">👋 Hi, I'm Md Mojahedul Islam</h1>
-<h3 align="center">Software Developer & Linux System Administrator | Founder of Light Technologies</h3>
+<h3 align="center">Software Developer & Linux System Administrator</h3>
 
 <p align="center">
   <a href="https://github.com/md-mojahed">
