@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const skillItem = document.createElement('div');
         skillItem.className = 'skill-item';
+        skillItem.setAttribute('data-aos', 'fade-up');
+        skillItem.setAttribute('data-aos-delay', delay.toString());
 
         skillItem.innerHTML = `
       <i class="${skill.icon}"></i>
@@ -161,10 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeline = document.querySelector('.timeline');
     experiences.forEach((exp, index) => {
         const delay = (index % 2) * 100;
-        const animation = index % 2 === 0 ? "fade-right" : "fade-left";
+        const animation = index % 2 === 0 ? "fade-right" : "fade-right";
 
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
+        timelineItem.setAttribute('data-aos', animation);
+        timelineItem.setAttribute('data-aos-delay', delay.toString());
 
         const timelineContent = document.createElement('div');
         timelineContent.className = 'timeline-content';
@@ -196,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 1,
             title: "E-commerce Platform",
             category: "web",
-            image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
             tags: ["Laravel", "Vue.js", "MySQL", "AWS"],
             description: "A fully-featured e-commerce platform with advanced inventory management and payment processing."
         },
@@ -204,7 +207,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 2,
             title: "Healthcare Management System",
             category: "web",
-            image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
             tags: ["PHP", "Laravel", "MySQL", "Alpine.js"],
             description: "A comprehensive healthcare management system for hospitals and clinics."
         },
@@ -212,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 3,
             title: "Food Delivery App",
             category: "app",
-            image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
             tags: ["Flutter", "Node.js", "Firebase"],
             description: "Mobile application for food ordering and delivery with real-time tracking."
         },
@@ -220,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 4,
             title: "Real Estate Platform",
             category: "web",
-            image: "https://images.unsplash.com/photo-1501854140801-50d01698950b",
             tags: ["PHP", "Laravel", "Vue.js", "Google Maps API"],
             description: "A property listing and management platform with advanced search and filtering."
         },
@@ -228,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 5,
             title: "Cloud Infrastructure Setup",
             category: "server",
-            image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
             tags: ["AWS", "Docker", "Kubernetes", "CI/CD"],
             description: "Complete cloud infrastructure setup with automated deployment pipelines."
         },
@@ -236,7 +235,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 6,
             title: "School Management System",
             category: "web",
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
             tags: ["PHP", "Laravel", "MySQL", "JavaScript"],
             description: "Comprehensive school management system with student, teacher, and administrative portals."
         },
@@ -244,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 7,
             title: "Inventory Management App",
             category: "app",
-            image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
             tags: ["Flutter", "Node.js", "MongoDB"],
             description: "Mobile application for inventory tracking and management with barcode scanning."
         },
@@ -252,11 +249,29 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 8,
             title: "High-Performance Server Cluster",
             category: "server",
-            image: "https://images.unsplash.com/photo-1527576539890-dfa815648363",
             tags: ["Linux", "Docker", "Load Balancing", "Redis"],
             description: "High-availability server cluster setup with load balancing and failover mechanisms."
         }
     ];
+
+    // Helper functions for project display
+    function getProjectIcon(category) {
+        const icons = {
+            'web': 'fa-globe',
+            'app': 'fa-mobile-alt',
+            'server': 'fa-server'
+        };
+        return icons[category] || 'fa-code';
+    }
+
+    function getCategoryName(category) {
+        const names = {
+            'web': 'Web Development',
+            'app': 'Mobile App',
+            'server': 'Server Admin'
+        };
+        return names[category] || 'Development';
+    }
 
     // Populate projects grid and set up filtering
     const projectsGrid = document.querySelector('.projects-grid');
@@ -271,19 +286,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const projectItem = document.createElement('div');
             projectItem.className = 'project-item';
+            projectItem.setAttribute('data-aos', 'fade-up');
+            projectItem.setAttribute('data-aos-delay', delay.toString());
 
             projectItem.innerHTML = `
-        <div class="project-image">
-          <img src="${project.image}" alt="${project.title}">
-          <div class="project-overlay">
-            <a href="#" class="project-link">View Project</a>
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fas ${getProjectIcon(project.category)}"></i>
           </div>
+          <div class="project-category">${getCategoryName(project.category)}</div>
         </div>
         <div class="project-content">
           <h3>${project.title}</h3>
           <p>${project.description}</p>
           <div class="project-tags">
             ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+          </div>
+          <div class="project-actions">
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
           </div>
         </div>
       `;
@@ -326,35 +349,45 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 1,
             name: "John Davis",
             position: "CTO, TechSolutions Inc.",
-            image: "https://randomuser.me/api/portraits/men/32.jpg",
+            company: "TechSolutions Inc.",
+            role: "CTO",
+            rating: 5,
             content: "Working with Mojahedul has been an absolute pleasure. His expertise in Laravel and server management helped us scale our application efficiently. He's responsive, professional, and delivers high-quality work consistently."
         },
         {
             id: 2,
             name: "Sarah Wilson",
             position: "Founder, EduLearn Platform",
-            image: "https://randomuser.me/api/portraits/women/44.jpg",
+            company: "EduLearn Platform",
+            role: "Founder",
+            rating: 5,
             content: "Mojahedul developed our entire learning management system from scratch. His attention to detail and technical knowledge are impressive. He understood our requirements perfectly and delivered even more than we expected."
         },
         {
             id: 3,
             name: "Michael Roberts",
             position: "Project Manager, HealthTech Solutions",
-            image: "https://randomuser.me/api/portraits/men/41.jpg",
+            company: "HealthTech Solutions",
+            role: "Project Manager",
+            rating: 5,
             content: "We hired Mojahedul for a complex healthcare project involving sensitive data. His security implementations were top-notch, and he ensured our platform was both user-friendly and secure. I highly recommend his services."
         },
         {
             id: 4,
             name: "Emily Chang",
             position: "E-commerce Director, FashionHub",
-            image: "https://randomuser.me/api/portraits/women/33.jpg",
+            company: "FashionHub",
+            role: "E-commerce Director",
+            rating: 5,
             content: "Mojahedul revolutionized our e-commerce platform. His expertise in PHP and Vue.js created a seamless shopping experience for our customers. Our sales have increased by 40% since the launch of the new website!"
         },
         {
             id: 5,
             name: "David Martinez",
             position: "Startup Founder",
-            image: "https://randomuser.me/api/portraits/men/22.jpg",
+            company: "TechStart",
+            role: "Startup Founder",
+            rating: 5,
             content: "As a startup with limited resources, finding a developer who could handle both frontend and backend was crucial. Mojahedul delivered our MVP on time and within budget, allowing us to secure our first round of funding."
         }
     ];
@@ -370,12 +403,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         testimonialItem.innerHTML = `
       <div class="testimonial-content">
-        <div class="testimonial-info">
-          <img src="${testimonial.image}" alt="${testimonial.name}" class="testimonial-image">
-          <div>
-            <p class="testimonial-quote">"${testimonial.content}"</p>
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="testimonial-rating">
+            ${Array.from({length: testimonial.rating}, () => '<i class="fas fa-star"></i>').join('')}
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-quote">"${testimonial.content}"</p>
+          <div class="testimonial-author">
             <h4 class="testimonial-name">${testimonial.name}</h4>
-            <p class="testimonial-position">${testimonial.position}</p>
+            <div class="testimonial-details">
+              <span class="testimonial-role">${testimonial.role}</span>
+              <span class="testimonial-company">${testimonial.company}</span>
+            </div>
           </div>
         </div>
       </div>
