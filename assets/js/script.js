@@ -102,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const skillItem = document.createElement('div');
         skillItem.className = 'skill-item';
-        skillItem.setAttribute('data-aos', 'fade-up');
-        skillItem.setAttribute('data-aos-delay', delay.toString());
 
         skillItem.innerHTML = `
       <i class="${skill.icon}"></i>
@@ -167,8 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
-        timelineItem.setAttribute('data-aos', animation);
-        timelineItem.setAttribute('data-aos-delay', delay.toString());
 
         const timelineContent = document.createElement('div');
         timelineContent.className = 'timeline-content';
@@ -275,8 +271,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const projectItem = document.createElement('div');
             projectItem.className = 'project-item';
-            projectItem.setAttribute('data-aos', 'fade-up');
-            projectItem.setAttribute('data-aos-delay', delay.toString());
 
             projectItem.innerHTML = `
         <div class="project-image">
