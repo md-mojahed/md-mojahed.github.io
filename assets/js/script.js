@@ -82,6 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Alpine.js", icon: "fas fa-code", level: 85 },
         { name: "RESTful API", icon: "fas fa-exchange-alt", level: 90 },
         { name: "Flutter", icon: "fas fa-mobile-alt", level: 75 },
+        { name: "Go", icon: "fa-brands fa-golang", level: 75 },
+        { name: "Package Development", icon: "fas fa-cube", level: 90 },
+        { name: "Composer", icon: "fas fa-box", level: 90 },
+        { name: "Chrome Extensions", icon: "fa-brands fa-chrome", level: 80 },
+        { name: "QR/Barcode Gen", icon: "fas fa-qrcode", level: 85 },
         { name: "AWS", icon: "fa-brands fa-aws", level: 85 },
         { name: "Linux", icon: "fa-brands fa-linux", level: 90 },
         { name: "Ubuntu", icon: "fa-brands fa-ubuntu", level: 90 },
@@ -198,59 +203,108 @@ document.addEventListener('DOMContentLoaded', function () {
     const projects = [
         {
             id: 1,
-            title: "E-commerce Platform",
-            category: "web",
-            tags: ["Laravel", "Vue.js", "MySQL", "AWS"],
-            description: "A fully-featured e-commerce platform with advanced inventory management and payment processing."
+            title: "MParser PHP Package",
+            category: "package",
+            tags: ["PHP", "Composer", "String Parsing", "Open Source"],
+            description: "A powerful PHP package that simplifies parsing complex strings with custom tokens and expressions. Available on Packagist as mojahed/mparser."
         },
         {
             id: 2,
-            title: "Healthcare Management System",
-            category: "web",
-            tags: ["PHP", "Laravel", "MySQL", "Alpine.js"],
-            description: "A comprehensive healthcare management system for hospitals and clinics."
+            title: "EduplusQR PHP SDK",
+            category: "package",
+            tags: ["PHP", "Go", "QR Code", "SDK"],
+            description: "Fast QR Code Generator PHP SDK with Go binary backend for high-performance QR code generation. Published as mojahed/eduplusqr."
         },
         {
             id: 3,
-            title: "Food Delivery App",
-            category: "app",
-            tags: ["Flutter", "Node.js", "Firebase"],
-            description: "Mobile application for food ordering and delivery with real-time tracking."
+            title: "EduplusBarcode PHP SDK",
+            category: "package",
+            tags: ["PHP", "Go", "Barcode", "SDK"],
+            description: "Fast Barcode Generator PHP SDK with Go binary backend for efficient barcode generation. Available as mojahed/eduplusbarcode."
         },
         {
             id: 4,
-            title: "Real Estate Platform",
-            category: "web",
-            tags: ["PHP", "Laravel", "Vue.js", "Google Maps API"],
-            description: "A property listing and management platform with advanced search and filtering."
+            title: "Laravel QR & Barcode Package",
+            category: "package",
+            tags: ["Laravel", "PHP", "QR Code", "Barcode"],
+            description: "Laravel package for QR Code and Barcode generation using EduplusQR and EduplusBarcode with configurable binary paths. Published as eduplus/qr."
         },
         {
             id: 5,
-            title: "Cloud Infrastructure Setup",
-            category: "server",
-            tags: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-            description: "Complete cloud infrastructure setup with automated deployment pipelines."
+            title: "Eduplus Archive SDK",
+            category: "package",
+            tags: ["PHP", "Laravel", "Archive System", "SDK"],
+            description: "PHP SDK for Eduplus Archive - Student Archive System with comprehensive document management capabilities. Available as eduplus/archive."
         },
         {
             id: 6,
-            title: "School Management System",
-            category: "web",
-            tags: ["PHP", "Laravel", "MySQL", "JavaScript"],
-            description: "Comprehensive school management system with student, teacher, and administrative portals."
+            title: "Md's Filler Chrome Extension",
+            category: "app",
+            tags: ["JavaScript", "Chrome Extension", "Testing", "Automation"],
+            description: "Chrome extension that automatically fills web forms with realistic context fake data for testing and development purposes."
         },
         {
             id: 7,
-            title: "Inventory Management App",
-            category: "app",
-            tags: ["Flutter", "Node.js", "MongoDB"],
-            description: "Mobile application for inventory tracking and management with barcode scanning."
+            title: "Mohammadpur Preparatory School & College",
+            category: "web",
+            tags: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+            description: "Complete school management website for Mohammadpur Preparatory School & College (college.mpsc.edu.bd) with student portal and administrative features."
         },
         {
             id: 8,
-            title: "High-Performance Server Cluster",
+            title: "Iqra Universal School",
+            category: "web",
+            tags: ["PHP", "Laravel", "MySQL", "Responsive Design"],
+            description: "Educational institution website for ইকরা ইউনিভার্সেল স্কুল (iqrauniversalschool.com) with bilingual support and modern design."
+        },
+        {
+            id: 9,
+            title: "Ideal School & College Motijheel",
+            category: "web",
+            tags: ["PHP", "Laravel", "MySQL", "Academic Portal"],
+            description: "Comprehensive school website for Ideal School & College, Motijheel, Dhaka (iscm.edu.bd) with student information system."
+        },
+        {
+            id: 10,
+            title: "South Point School & College Baridhara",
+            category: "web",
+            tags: ["PHP", "Laravel", "MySQL", "CMS"],
+            description: "Modern educational website for South Point School & College (spsc-baridhara.com) with content management and student services."
+        },
+        {
+            id: 11,
+            title: "Araf Baby Mart E-commerce",
+            category: "web",
+            tags: ["PHP", "Laravel", "E-commerce", "Payment Gateway"],
+            description: "Full-featured e-commerce platform for baby products (arafbabymart.com) with inventory management, payment processing, and order tracking."
+        },
+        {
+            id: 12,
+            title: "People Engager Mobile App",
+            category: "app",
+            tags: ["Flutter", "Android", "iOS", "Cross-platform"],
+            description: "Cross-platform mobile application for people engagement and social networking, available on both Android and iOS platforms."
+        },
+        {
+            id: 13,
+            title: "Eduplus Student Mobile App",
+            category: "app",
+            tags: ["Flutter", "Android", "Education", "Student Portal"],
+            description: "Educational mobile application for students with features for course management, assignments, and academic tracking on Android platform."
+        },
+        {
+            id: 14,
+            title: "WithImpact.com Server Infrastructure",
             category: "server",
-            tags: ["Linux", "Docker", "Load Balancing", "Redis"],
-            description: "High-availability server cluster setup with load balancing and failover mechanisms."
+            tags: ["AWS", "Hostinger", "WHM", "cPanel"],
+            description: "Complete server administration and infrastructure management for WithImpact.com including AWS cloud services, Hostinger hosting, and cPanel/WHM server management."
+        },
+        {
+            id: 15,
+            title: "Light Technologies Server Management",
+            category: "server",
+            tags: ["Linode", "AWS", "WHM", "cPanel"],
+            description: "Comprehensive server administration for Light Technologies including Linode VPS management, AWS cloud infrastructure, and cPanel/WHM server configuration and maintenance."
         }
     ];
 
@@ -259,7 +313,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const icons = {
             'web': 'fa-globe',
             'app': 'fa-mobile-alt',
-            'server': 'fa-server'
+            'server': 'fa-server',
+            'package': 'fa-cube'
         };
         return icons[category] || 'fa-code';
     }
@@ -268,7 +323,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const names = {
             'web': 'Web Development',
             'app': 'Mobile App',
-            'server': 'Server Admin'
+            'server': 'Server Admin',
+            'package': 'Package/SDK'
         };
         return names[category] || 'Development';
     }
@@ -347,48 +403,57 @@ document.addEventListener('DOMContentLoaded', function () {
     const testimonials = [
         {
             id: 1,
-            name: "John Davis",
-            position: "CTO, TechSolutions Inc.",
-            company: "TechSolutions Inc.",
-            role: "CTO",
+            name: "Upwork Client",
+            position: "Enterprise Client",
+            company: "AWS Project",
+            role: "Enterprise Client",
             rating: 5,
-            content: "Working with Mojahedul has been an absolute pleasure. His expertise in Laravel and server management helped us scale our application efficiently. He's responsive, professional, and delivers high-quality work consistently."
+            content: "I have worked with many contractors on Upwork. Mojahedul has been the best. He is on time and on budget. His problem solving skills are extremely advanced. The quality of his work is always top notch. His work rarely needs revisions. If it does, he does it quickly and always within spec. If you have any programming or web task you should consider him. You will never be disappointed."
         },
         {
             id: 2,
-            name: "Sarah Wilson",
-            position: "Founder, EduLearn Platform",
-            company: "EduLearn Platform",
-            role: "Founder",
+            name: "Upwork Client",
+            position: "Project Manager",
+            company: "Web Development",
+            role: "Project Manager",
             rating: 5,
-            content: "Mojahedul developed our entire learning management system from scratch. His attention to detail and technical knowledge are impressive. He understood our requirements perfectly and delivered even more than we expected."
+            content: "Mojahedul was extremely helpful and knowledgeable. He helped us on solving a nuxt.js deployment while transferring a hosting for our website. I recommend him to anyone needing web development solutions."
         },
         {
             id: 3,
-            name: "Michael Roberts",
-            position: "Project Manager, HealthTech Solutions",
-            company: "HealthTech Solutions",
-            role: "Project Manager",
+            name: "Upwork Client",
+            position: "Technical Lead",
+            company: "AWS Enterprise",
+            role: "Technical Lead",
             rating: 5,
-            content: "We hired Mojahedul for a complex healthcare project involving sensitive data. His security implementations were top-notch, and he ensured our platform was both user-friendly and secure. I highly recommend his services."
+            content: "Md did a great job on a LAMP REST API deployment to Amazon Web Services. We'd be happy to work with this freelancer again."
         },
         {
             id: 4,
-            name: "Emily Chang",
-            position: "E-commerce Director, FashionHub",
-            company: "FashionHub",
-            role: "E-commerce Director",
+            name: "Upwork Client",
+            position: "DevOps Manager",
+            company: "Infrastructure Project",
+            role: "DevOps Manager",
             rating: 5,
-            content: "Mojahedul revolutionized our e-commerce platform. His expertise in PHP and Vue.js created a seamless shopping experience for our customers. Our sales have increased by 40% since the launch of the new website!"
+            content: "Excellent professional. He managed to spot issues on my setup and fix them very quickly. Great DevOps. Very good at his work. Extremely knowledgeable and hard working. Good communication. Highly recommend."
         },
         {
             id: 5,
-            name: "David Martinez",
+            name: "Upwork Client",
+            position: "Software Engineer",
+            company: "Backend Development",
+            role: "Software Engineer",
+            rating: 5,
+            content: "Mojahedul is a genius! Found and fixed my problem in minutes. Md. Mojahedul is great solving big problems. He never desists until he finds a solution. Great job!"
+        },
+        {
+            id: 6,
+            name: "Upwork Client",
             position: "Startup Founder",
-            company: "TechStart",
+            company: "Web Application",
             role: "Startup Founder",
             rating: 5,
-            content: "As a startup with limited resources, finding a developer who could handle both frontend and backend was crucial. Mojahedul delivered our MVP on time and within budget, allowing us to secure our first round of funding."
+            content: "Amazing work!! Has the skills, the service, and the communication. It was a pleasure, and I will be back very soon! He was very helpful, got work done quick and without issue. Knowledgeable and would hire again."
         }
     ];
 
