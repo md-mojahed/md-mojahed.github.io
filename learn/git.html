@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Commands শিখুন - সম্পূর্ণ গাইড</title>
+  
+  <!-- Meta tags for SEO -->
+  <meta name="description" content="Git commands এর সম্পূর্ণ গাইড বাংলায়। সব ধরনের Git কমান্ড, সমস্যা এবং সমাধান সহ বাস্তব উদাহরণ।">
+  <meta name="keywords" content="git commands, git tutorial bangla, git শিখুন, version control, git problems solutions">
+  <meta name="author" content="Md Mojahedul Islam">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/images/profile-1.png">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+  
+  <!-- Bootstrap CSS -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #9b87f5;
+      --primary-dark: #7E69AB;
+      --primary-light: #E5DEFF;
+      --dark: #333333;
+      --light: #FFFFFF;
+      --gray: #8E9196;
+      --light-gray: #F6F6F7;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --info: #17a2b8;
+      --transition: all 0.3s ease;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      background-color: var(--light-gray);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', 'Noto Sans Bengali', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--light);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-section {
+      background: var(--light);
+      padding: 40px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: 2px solid var(--primary-light);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .content-section {
+      padding: 60px 0;
+    }
+
+    .git-section {
+      background: var(--light);
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .git-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, var(--primary-light), rgba(255, 255, 255, 0.8));
+      padding: 25px 30px;
+      border-bottom: 1px solid var(--primary-light);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-description {
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+
+    .section-content {
+      padding: 30px;
+    }
+
+    .command-item {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .command-title {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .command-code {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    .command-explanation {
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+
+    .example-scenario {
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .scenario-title {
+      color: var(--success);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .problem-scenario {
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .problem-title {
+      color: var(--danger);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-box {
+      background: rgba(23, 162, 184, 0.1);
+      border: 1px solid var(--info);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 10px;
+    }
+
+    .solution-title {
+      color: var(--info);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      color: var(--light);
+      transform: translateY(-5px);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray);
+    }
+
+    .no-results i {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .header p {
+        font-size: 1rem;
+      }
+      
+      .section-content {
+        padding: 20px;
+      }
+      
+      .command-code {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1><i class="fab fa-git-alt me-3"></i>Git Commands শিখুন</h1>
+      <p>সম্পূর্ণ Git কমান্ড গাইড বাংলায় - বাস্তব উদাহরণ, সমস্যা এবং সমাধান সহ</p>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Git কমান্ড বা সমস্যা খুঁজুন... (যেমন: commit, push, merge)">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <div class="container">
+      <div id="gitSections">
+        <!-- Git sections will be populated by JavaScript -->
+      </div>
+      
+      <!-- No Results Message -->
+      <div id="noResults" class="no-results" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+        <p>আপনার অনুসন্ধানের জন্য কোন Git কমান্ড বা সমস্যা খুঁজে পাওয়া যায়নি।<br>অন্য কিছু খোঁজার চেষ্টা করুন।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript Libraries -->
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    // Git commands data in Bengali
+    const gitSections = [
+      {
+        id: 'basic-setup',
+        title: 'প্রাথমিক সেটআপ',
+        icon: 'fas fa-cog',
+        description: 'Git ইনস্টল এবং প্রাথমিক কনফিগারেশন',
+        commands: [
+          {
+            title: 'Git ইনস্টল চেক করুন',
+            code: 'git --version',
+            explanation: 'আপনার সিস্টেমে Git ইনস্টল আছে কিনা এবং কোন ভার্সন আছে তা দেখুন।',
+            example: {
+              scenario: 'নতুন কম্পিউটারে Git আছে কিনা চেক করতে হবে',
+              result: 'git version 2.34.1 - এরকম আউটপুট দেখাবে'
+            }
+          },
+          {
+            title: 'ব্যবহারকারীর নাম সেট করুন',
+            code: 'git config --global user.name "আপনার নাম"',
+            explanation: 'সব commit এ আপনার নাম দেখানোর জন্য এই কমান্ড ব্যবহার করুন।',
+            example: {
+              scenario: 'প্রথমবার Git ব্যবহার করার সময়',
+              result: 'git config --global user.name "Md Mojahedul Islam"'
+            }
+          },
+          {
+            title: 'ইমেইল সেট করুন',
+            code: 'git config --global user.email "your.email@example.com"',
+            explanation: 'সব commit এ আপনার ইমেইল দেখানোর জন্য এই কমান্ড ব্যবহার করুন।',
+            example: {
+              scenario: 'GitHub এর সাথে সংযোগ করার জন্য',
+              result: 'git config --global user.email "dev.mojahedul@gmail.com"'
+            }
+          },
+          {
+            title: 'কনফিগারেশন দেখুন',
+            code: 'git config --list',
+            explanation: 'বর্তমান সব Git কনফিগারেশন দেখুন।',
+            problem: {
+              issue: 'কনফিগারেশন ঠিক আছে কিনা নিশ্চিত হতে পারছি না',
+              solution: 'এই কমান্ড দিয়ে সব সেটিংস দেখে নিন এবং প্রয়োজনে পরিবর্তন করুন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'repository-basics',
+        title: 'রিপোজিটরি তৈরি ও ক্লোন',
+        icon: 'fas fa-folder-plus',
+        description: 'নতুন রিপোজিটরি তৈরি এবং বিদ্যমান রিপোজিটরি ক্লোন করা',
+        commands: [
+          {
+            title: 'নতুন রিপোজিটরি তৈরি',
+            code: 'git init',
+            explanation: 'বর্তমান ফোল্ডারে একটি নতুন Git রিপোজিটরি তৈরি করুন।',
+            example: {
+              scenario: 'নতুন প্রজেক্ট শুরু করার সময়',
+              result: 'একটি .git ফোল্ডার তৈরি হবে যা Git এর সব তথ্য রাখবে'
+            }
+          },
+          {
+            title: 'রিপোজিটরি ক্লোন করুন',
+            code: 'git clone https://github.com/username/repository.git',
+            explanation: 'GitHub বা অন্য কোন সার্ভার থেকে একটি রিপোজিটরি কপি করুন।',
+            example: {
+              scenario: 'অন্যের প্রজেক্টে কাজ করার জন্য',
+              result: 'git clone https://github.com/md-mojahed/my-project.git'
+            }
+          },
+          {
+            title: 'নির্দিষ্ট ফোল্ডারে ক্লোন',
+            code: 'git clone https://github.com/username/repo.git my-folder',
+            explanation: 'রিপোজিটরি একটি নির্দিষ্ট নামের ফোল্ডারে ক্লোন করুন।',
+            problem: {
+              issue: 'ডিফল্ট নামের পরিবর্তে নিজের পছন্দের নাম দিতে চাই',
+              solution: 'ক্লোন কমান্ডের শেষে আপনার পছন্দের ফোল্ডার নাম লিখুন'
+            }
+          },
+          {
+            title: 'রিমোট URL দেখুন',
+            code: 'git remote -v',
+            explanation: 'রিপোজিটরির রিমোট URL গুলো দেখুন।',
+            example: {
+              scenario: 'কোন GitHub রিপোজিটরির সাথে সংযুক্ত আছি তা জানতে',
+              result: 'origin https://github.com/username/repo.git (fetch)\norigin https://github.com/username/repo.git (push)'
+            }
+          }
+        ]
+      },
+      {
+        id: 'file-operations',
+        title: 'ফাইল অপারেশন',
+        icon: 'fas fa-file-alt',
+        description: 'ফাইল add, commit এবং status দেখা',
+        commands: [
+          {
+            title: 'স্ট্যাটাস দেখুন',
+            code: 'git status',
+            explanation: 'কোন ফাইল পরিবর্তিত হয়েছে, কোনটি staged আছে তা দেখুন।',
+            example: {
+              scenario: 'কাজ করার পর কি কি পরিবর্তন হয়েছে জানতে',
+              result: 'লাল রঙে untracked/modified ফাইল, সবুজে staged ফাইল দেখাবে'
+            }
+          },
+          {
+            title: 'একটি ফাইল add করুন',
+            code: 'git add filename.txt',
+            explanation: 'একটি নির্দিষ্ট ফাইল staging area তে যোগ করুন।',
+            example: {
+              scenario: 'শুধু index.html ফাইল commit করতে চাই',
+              result: 'git add index.html'
+            }
+          },
+          {
+            title: 'সব ফাইল add করুন',
+            code: 'git add .',
+            explanation: 'বর্তমান ডিরেক্টরির সব পরিবর্তিত ফাইল staging area তে যোগ করুন।',
+            problem: {
+              issue: 'অনেক ফাইল পরিবর্তন হয়েছে, একটা একটা করে add করতে সময় লাগছে',
+              solution: 'git add . দিয়ে সব ফাইল একসাথে add করুন'
+            }
+          },
+          {
+            title: 'কমিট করুন',
+            code: 'git commit -m "আপনার কমিট মেসেজ"',
+            explanation: 'staged ফাইলগুলো একটি মেসেজ সহ commit করুন।',
+            example: {
+              scenario: 'নতুন ফিচার যোগ করার পর',
+              result: 'git commit -m "Add user login feature"'
+            }
+          },
+          {
+            title: 'add এবং commit একসাথে',
+            code: 'git commit -am "মেসেজ"',
+            explanation: 'tracked ফাইলগুলো add এবং commit একসাথে করুন।',
+            example: {
+              scenario: 'দ্রুত কাজ করার জন্য',
+              result: 'git commit -am "Fix navigation bug"'
+            }
+          },
+          {
+            title: 'ফাইল unstage করুন',
+            code: 'git reset HEAD filename.txt',
+            explanation: 'staging area থেকে একটি ফাইল সরিয়ে নিন।',
+            problem: {
+              issue: 'ভুল করে একটি ফাইল add করে ফেলেছি',
+              solution: 'git reset HEAD filename দিয়ে ফাইলটি unstage করুন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'branch-operations',
+        title: 'ব্রাঞ্চ ম্যানেজমেন্ট',
+        icon: 'fas fa-code-branch',
+        description: 'ব্রাঞ্চ তৈরি, পরিবর্তন এবং মার্জ করা',
+        commands: [
+          {
+            title: 'সব ব্রাঞ্চ দেখুন',
+            code: 'git branch',
+            explanation: 'লোকাল রিপোজিটরির সব ব্রাঞ্চ দেখুন। বর্তমান ব্রাঞ্চ * দিয়ে চিহ্নিত।',
+            example: {
+              scenario: 'কোন ব্রাঞ্চে আছি এবং আর কি কি ব্রাঞ্চ আছে জানতে',
+              result: '* main\n  feature-login\n  bugfix-navbar'
+            }
+          },
+          {
+            title: 'নতুন ব্রাঞ্চ তৈরি',
+            code: 'git branch branch-name',
+            explanation: 'একটি নতুন ব্রাঞ্চ তৈরি করুন কিন্তু সেখানে যাবেন না।',
+            example: {
+              scenario: 'নতুন ফিচারের জন্য আলাদা ব্রাঞ্চ তৈরি করতে',
+              result: 'git branch feature-payment'
+            }
+          },
+          {
+            title: 'ব্রাঞ্চ পরিবর্তন',
+            code: 'git checkout branch-name',
+            explanation: 'অন্য একটি ব্রাঞ্চে চলে যান।',
+            example: {
+              scenario: 'feature ব্রাঞ্চে কাজ করতে যেতে হবে',
+              result: 'git checkout feature-payment'
+            }
+          },
+          {
+            title: 'নতুন ব্রাঞ্চ তৈরি করে সেখানে যান',
+            code: 'git checkout -b new-branch-name',
+            explanation: 'একটি নতুন ব্রাঞ্চ তৈরি করুন এবং সাথে সাথে সেখানে চলে যান।',
+            example: {
+              scenario: 'দ্রুত নতুন ফিচার শুরু করতে',
+              result: 'git checkout -b feature-dashboard'
+            }
+          },
+          {
+            title: 'ব্রাঞ্চ মার্জ করুন',
+            code: 'git merge branch-name',
+            explanation: 'অন্য একটি ব্রাঞ্চের পরিবর্তন বর্তমান ব্রাঞ্চে নিয়ে আসুন।',
+            example: {
+              scenario: 'feature ব্রাঞ্চের কাজ main ব্রাঞ্চে নিয়ে আসতে',
+              result: 'প্রথমে main এ যান: git checkout main\nতারপর মার্জ করুন: git merge feature-payment'
+            }
+          },
+          {
+            title: 'ব্রাঞ্চ ডিলিট করুন',
+            code: 'git branch -d branch-name',
+            explanation: 'একটি ব্রাঞ্চ মুছে ফেলুন (যদি এটি মার্জ হয়ে থাকে)।',
+            problem: {
+              issue: 'অনেক পুরাতন ব্রাঞ্চ জমে গেছে, পরিষ্কার করতে চাই',
+              solution: 'মার্জ হয়ে যাওয়া ব্রাঞ্চগুলো git branch -d দিয়ে মুছে দিন'
+            }
+          },
+          {
+            title: 'জোর করে ব্রাঞ্চ ডিলিট',
+            code: 'git branch -D branch-name',
+            explanation: 'একটি ব্রাঞ্চ জোর করে মুছে ফেলুন (মার্জ না হলেও)।',
+            problem: {
+              issue: 'ভুল ব্রাঞ্চ তৈরি করেছি, মার্জ না করেই মুছতে চাই',
+              solution: 'git branch -D দিয়ে জোর করে মুছে দিন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'remote-operations',
+        title: 'রিমোট অপারেশন',
+        icon: 'fas fa-cloud',
+        description: 'GitHub/GitLab এর সাথে কাজ করা',
+        commands: [
+          {
+            title: 'রিমোট রিপোজিটরিতে পুশ',
+            code: 'git push origin main',
+            explanation: 'লোকাল পরিবর্তনগুলো রিমোট রিপোজিটরিতে পাঠান।',
+            example: {
+              scenario: 'GitHub এ আপনার কাজ আপলোড করতে',
+              result: 'সব commit GitHub এ চলে যাবে'
+            }
+          },
+          {
+            title: 'প্রথমবার পুশ করুন',
+            code: 'git push -u origin main',
+            explanation: 'প্রথমবার পুশ করার সময় upstream সেট করুন।',
+            example: {
+              scenario: 'নতুন রিপোজিটরি প্রথমবার GitHub এ পুশ করতে',
+              result: 'পরবর্তীতে শুধু git push লিখলেই হবে'
+            }
+          },
+          {
+            title: 'রিমোট থেকে পুল',
+            code: 'git pull origin main',
+            explanation: 'রিমোট রিপোজিটরি থেকে নতুন পরিবর্তন নিয়ে আসুন।',
+            example: {
+              scenario: 'টিমের অন্যদের কাজ আপনার কম্পিউটারে নিয়ে আসতে',
+              result: 'সব নতুন commit আপনার লোকাল রিপোতে আসবে'
+            }
+          },
+          {
+            title: 'ফেচ করুন',
+            code: 'git fetch origin',
+            explanation: 'রিমোট থেকে তথ্য নিয়ে আসুন কিন্তু মার্জ করবেন না।',
+            example: {
+              scenario: 'দেখতে চান রিমোটে কি নতুন আছে কিন্তু এখনই মার্জ করতে চান না',
+              result: 'রিমোট ব্রাঞ্চের তথ্য আপডেট হবে'
+            }
+          },
+          {
+            title: 'নতুন ব্রাঞ্চ পুশ',
+            code: 'git push -u origin new-branch',
+            explanation: 'নতুন তৈরি করা ব্রাঞ্চ রিমোটে পুশ করুন।',
+            problem: {
+              issue: 'নতুন ব্রাঞ্চ পুশ করতে গিয়ে এরর আসছে',
+              solution: 'প্রথমবার -u origin branch-name দিয়ে পুশ করুন'
+            }
+          },
+          {
+            title: 'রিমোট ব্রাঞ্চ ডিলিট',
+            code: 'git push origin --delete branch-name',
+            explanation: 'রিমোট রিপোজিটরি থেকে একটি ব্রাঞ্চ মুছে ফেলুন।',
+            example: {
+              scenario: 'GitHub থেকে পুরাতন ব্রাঞ্চ মুছতে',
+              result: 'git push origin --delete feature-old'
+            }
+          }
+        ]
+      },
+      {
+        id: 'history-logs',
+        title: 'হিস্টরি ও লগ',
+        icon: 'fas fa-history',
+        description: 'কমিট হিস্টরি এবং পরিবর্তন দেখা',
+        commands: [
+          {
+            title: 'কমিট হিস্টরি দেখুন',
+            code: 'git log',
+            explanation: 'সব কমিটের তালিকা দেখুন বিস্তারিত তথ্য সহ।',
+            example: {
+              scenario: 'কে কখন কি কাজ করেছে তা জানতে',
+              result: 'প্রতিটি কমিটের hash, author, date এবং message দেখাবে'
+            }
+          },
+          {
+            title: 'সংক্ষিপ্ত লগ',
+            code: 'git log --oneline',
+            explanation: 'প্রতিটি কমিট একটি লাইনে দেখুন।',
+            example: {
+              scenario: 'দ্রুত সব কমিট দেখতে চাই',
+              result: 'abc1234 Add login feature\ndef5678 Fix navbar bug'
+            }
+          },
+          {
+            title: 'গ্রাফিক্যাল লগ',
+            code: 'git log --graph --oneline --all',
+            explanation: 'ব্রাঞ্চ এবং মার্জের গ্রাফিক্যাল ভিউ দেখুন।',
+            example: {
+              scenario: 'ব্রাঞ্চিং এবং মার্জিং এর ছবি দেখতে',
+              result: 'ASCII গ্রাফ দিয়ে ব্রাঞ্চের গঠন দেখাবে'
+            }
+          },
+          {
+            title: 'নির্দিষ্ট ফাইলের হিস্টরি',
+            code: 'git log filename.txt',
+            explanation: 'একটি নির্দিষ্ট ফাইলের সব পরিবর্তনের ইতিহাস দেখুন।',
+            example: {
+              scenario: 'index.html ফাইলে কে কি পরিবর্তন করেছে জানতে',
+              result: 'git log index.html'
+            }
+          },
+          {
+            title: 'কমিটের বিস্তারিত দেখুন',
+            code: 'git show commit-hash',
+            explanation: 'একটি নির্দিষ্ট কমিটে কি পরিবর্তন হয়েছে তা দেখুন।',
+            example: {
+              scenario: 'একটি কমিটে ঠিক কি কি লাইন পরিবর্তন হয়েছে জানতে',
+              result: 'git show abc1234'
+            }
+          },
+          {
+            title: 'ফাইলের পরিবর্তন দেখুন',
+            code: 'git diff',
+            explanation: 'এখনো commit না করা পরিবর্তনগুলো দেখুন।',
+            problem: {
+              issue: 'কি কি পরিবর্তন করেছি মনে নেই',
+              solution: 'git diff দিয়ে সব পরিবর্তন দেখে নিন'
+            }
+          },
+          {
+            title: 'দুই কমিটের তুলনা',
+            code: 'git diff commit1 commit2',
+            explanation: 'দুটি কমিটের মধ্যে পার্থক্য দেখুন।',
+            example: {
+              scenario: 'দুই ভার্সনের মধ্যে কি পরিবর্তন হয়েছে জানতে',
+              result: 'git diff abc1234 def5678'
+            }
+          }
+        ]
+      },
+      {
+        id: 'undo-operations',
+        title: 'আন্ডু অপারেশন',
+        icon: 'fas fa-undo',
+        description: 'ভুল পরিবর্তন ফিরিয়ে আনা',
+        commands: [
+          {
+            title: 'ফাইলের পরিবর্তন বাতিল',
+            code: 'git checkout -- filename.txt',
+            explanation: 'একটি ফাইলের সব uncommitted পরিবর্তন বাতিল করুন।',
+            problem: {
+              issue: 'ভুল করে ফাইল নষ্ট করে ফেলেছি, আগের অবস্থায় ফিরিয়ে আনতে চাই',
+              solution: 'git checkout -- filename দিয়ে ফাইল আগের অবস্থায় ফিরিয়ে আনুন'
+            }
+          },
+          {
+            title: 'সব পরিবর্তন বাতিল',
+            code: 'git checkout -- .',
+            explanation: 'সব ফাইলের uncommitted পরিবর্তন বাতিল করুন।',
+            example: {
+              scenario: 'অনেক ফাইল পরিবর্তন করেছি কিন্তু সব বাতিল করতে চাই',
+              result: 'সব ফাইল শেষ কমিটের অবস্থায় ফিরে যাবে'
+            }
+          },
+          {
+            title: 'শেষ কমিট পরিবর্তন',
+            code: 'git commit --amend -m "নতুন মেসেজ"',
+            explanation: 'শেষ কমিটের মেসেজ পরিবর্তন করুন।',
+            example: {
+              scenario: 'কমিট মেসেজে ভুল লিখেছি',
+              result: 'git commit --amend -m "Fix typo in login form"'
+            }
+          },
+          {
+            title: 'কমিট রিসেট (soft)',
+            code: 'git reset --soft HEAD~1',
+            explanation: 'শেষ কমিট বাতিল করুন কিন্তু ফাইলের পরিবর্তন রাখুন।',
+            example: {
+              scenario: 'ভুল করে কমিট করেছি, আবার এডিট করতে চাই',
+              result: 'কমিট বাতিল হবে কিন্তু ফাইল staged থাকবে'
+            }
+          },
+          {
+            title: 'কমিট রিসেট (hard)',
+            code: 'git reset --hard HEAD~1',
+            explanation: 'শেষ কমিট এবং সব পরিবর্তন সম্পূর্ণ বাতিল করুন।',
+            problem: {
+              issue: 'সম্পূর্ণ ভুল কাজ করেছি, সব কিছু আগের অবস্থায় ফিরিয়ে আনতে চাই',
+              solution: 'সাবধান! এটি সব পরিবর্তন মুছে দেবে। git reset --hard HEAD~1'
+            }
+          },
+          {
+            title: 'নির্দিষ্ট কমিটে ফিরে যান',
+            code: 'git reset --hard commit-hash',
+            explanation: 'একটি নির্দিষ্ট কমিটের অবস্থায় ফিরে যান।',
+            example: {
+              scenario: 'অনেক আগের একটি ভার্সনে ফিরে যেতে চাই',
+              result: 'git reset --hard abc1234'
+            }
+          },
+          {
+            title: 'কমিট রিভার্ট',
+            code: 'git revert commit-hash',
+            explanation: 'একটি কমিটের পরিবর্তন উল্টো করে নতুন কমিট তৈরি করুন।',
+            example: {
+              scenario: 'একটি কমিট সমস্যা করেছে কিন্তু হিস্টরি রাখতে চাই',
+              result: 'git revert abc1234 - নতুন কমিট তৈরি হবে যা পুরাতন পরিবর্তন উল্টাবে'
+            }
+          }
+        ]
+      },
+      {
+        id: 'stash-operations',
+        title: 'স্ট্যাশ অপারেশন',
+        icon: 'fas fa-archive',
+        description: 'অস্থায়ীভাবে কাজ সংরক্ষণ করা',
+        commands: [
+          {
+            title: 'কাজ স্ট্যাশ করুন',
+            code: 'git stash',
+            explanation: 'বর্তমান uncommitted পরিবর্তনগুলো অস্থায়ীভাবে সংরক্ষণ করুন।',
+            example: {
+              scenario: 'কাজ অর্ধেক শেষ কিন্তু জরুরি অন্য ব্রাঞ্চে যেতে হবে',
+              result: 'সব পরিবর্তন লুকিয়ে রাখা হবে, working directory পরিষ্কার হবে'
+            }
+          },
+          {
+            title: 'মেসেজ সহ স্ট্যাশ',
+            code: 'git stash save "কাজের বিবরণ"',
+            explanation: 'একটি বিবরণ সহ কাজ স্ট্যাশ করুন।',
+            example: {
+              scenario: 'পরে মনে রাখার জন্য কি কাজ করছিলাম তা লিখে রাখতে',
+              result: 'git stash save "Working on user profile page"'
+            }
+          },
+          {
+            title: 'স্ট্যাশ তালিকা দেখুন',
+            code: 'git stash list',
+            explanation: 'সব স্ট্যাশ করা কাজের তালিকা দেখুন।',
+            example: {
+              scenario: 'কয়টা কাজ স্ট্যাশ করে রেখেছি তা দেখতে',
+              result: 'stash@{0}: WIP on main: abc1234 Add login\nstash@{1}: On feature: def5678 Working on profile'
+            }
+          },
+          {
+            title: 'স্ট্যাশ ফিরিয়ে আনুন',
+            code: 'git stash pop',
+            explanation: 'সবচেয়ে নতুন স্ট্যাশ ফিরিয়ে আনুন এবং স্ট্যাশ তালিকা থেকে মুছে দিন।',
+            example: {
+              scenario: 'আগের কাজ আবার শুরু করতে চাই',
+              result: 'স্ট্যাশ করা পরিবর্তন ফিরে আসবে'
+            }
+          },
+          {
+            title: 'নির্দিষ্ট স্ট্যাশ ফিরিয়ে আনুন',
+            code: 'git stash apply stash@{1}',
+            explanation: 'একটি নির্দিষ্ট স্ট্যাশ ফিরিয়ে আনুন কিন্তু তালিকা থেকে মুছবেন না।',
+            problem: {
+              issue: 'অনেক স্ট্যাশ আছে, নির্দিষ্ট একটা চাই',
+              solution: 'git stash list দেখে নম্বর বের করুন, তারপর git stash apply stash@{নম্বর}'
+            }
+          },
+          {
+            title: 'স্ট্যাশ মুছে ফেলুন',
+            code: 'git stash drop stash@{0}',
+            explanation: 'একটি নির্দিষ্ট স্ট্যাশ মুছে ফেলুন।',
+            example: {
+              scenario: 'পুরাতন স্ট্যাশ আর দরকার নেই',
+              result: 'git stash drop stash@{1}'
+            }
+          },
+          {
+            title: 'সব স্ট্যাশ মুছুন',
+            code: 'git stash clear',
+            explanation: 'সব স্ট্যাশ মুছে ফেলুন।',
+            problem: {
+              issue: 'অনেক পুরাতন স্ট্যাশ জমে গেছে, সব পরিষ্কার করতে চাই',
+              solution: 'সাবধান! git stash clear সব স্ট্যাশ মুছে দেবে'
+            }
+          }
+        ]
+      },
+      {
+        id: 'merge-conflicts',
+        title: 'মার্জ কনফ্লিক্ট সমাধান',
+        icon: 'fas fa-exclamation-triangle',
+        description: 'মার্জ কনফ্লিক্ট চিহ্নিত করা এবং সমাধান করা',
+        commands: [
+          {
+            title: 'কনফ্লিক্ট দেখুন',
+            code: 'git status',
+            explanation: 'কোন ফাইলে মার্জ কনফ্লিক্ট হয়েছে তা দেখুন।',
+            problem: {
+              issue: 'মার্জ করতে গিয়ে এরর আসছে',
+              solution: 'git status দিয়ে দেখুন কোন ফাইলে "both modified" লেখা আছে'
+            }
+          },
+          {
+            title: 'কনফ্লিক্ট ফাইল এডিট করুন',
+            code: 'nano conflicted-file.txt',
+            explanation: 'কনফ্লিক্ট ফাইল খুলে <<<<<<< এবং >>>>>>> চিহ্ন দেখে সমাধান করুন।',
+            example: {
+              scenario: 'ফাইলে <<<<<<< HEAD এবং >>>>>>> branch-name দেখা যাচ্ছে',
+              result: 'দুই ভার্সনের মধ্যে কোনটা রাখবেন তা ঠিক করে চিহ্নগুলো মুছে দিন'
+            }
+          },
+          {
+            title: 'কনফ্লিক্ট সমাধানের পর add',
+            code: 'git add conflicted-file.txt',
+            explanation: 'কনফ্লিক্ট সমাধান করার পর ফাইল add করুন।',
+            example: {
+              scenario: 'কনফ্লিক্ট ঠিক করার পর',
+              result: 'git add . দিয়ে সব সমাধান করা ফাইল add করুন'
+            }
+          },
+          {
+            title: 'মার্জ সম্পূর্ণ করুন',
+            code: 'git commit',
+            explanation: 'কনফ্লিক্ট সমাধানের পর মার্জ কমিট করুন।',
+            example: {
+              scenario: 'সব কনফ্লিক্ট সমাধান করার পর',
+              result: 'Git নিজেই মার্জ মেসেজ তৈরি করবে'
+            }
+          },
+          {
+            title: 'মার্জ বাতি��� করুন',
+            code: 'git merge --abort',
+            explanation: 'মার্জ প্রক্রিয়া সম্পূর্ণ বাতিল করুন।',
+            problem: {
+              issue: 'কনফ্লিক্ট খুব জটিল, মার্জ বাতিল করে অন্যভাবে করতে চাই',
+              solution: 'git merge --abort দিয়ে সব কিছু আগের অবস্থায় ফিরিয়ে আনুন'
+            }
+          },
+          {
+            title: 'মার্জ টুল ব্যবহার',
+            code: 'git mergetool',
+            explanation: 'গ্রাফিক্যাল মার্জ টুল খুলুন কনফ্লিক্ট সমাধানের জন্য।',
+            example: {
+              scenario: 'কমান্ড লাইনে কনফ্লিক্ট সমাধান কঠিন লাগছে',
+              result: 'Visual Studio Code বা অন্য এডিটর খুলবে'
+            }
+          }
+        ]
+      },
+      {
+        id: 'advanced-operations',
+        title: 'এডভান্সড অপারেশন',
+        icon: 'fas fa-cogs',
+        description: 'রিবেস, চেরি-পিক এবং অন্যান্য এডভান্সড কমান্ড',
+        commands: [
+          {
+            title: 'রিবেস করুন',
+            code: 'git rebase main',
+            explanation: 'বর্তমান ব্রাঞ্চের কমিটগুলো main ব্রাঞ্চের উপর নতুন করে বসান।',
+            example: {
+              scenario: 'feature ব্রাঞ্চকে main এর সাথে আপডেট রাখতে',
+              result: 'কমিট হিস্টরি সুন্দর এবং লিনিয়ার হবে'
+            }
+          },
+          {
+            title: 'ইন্টারঅ্যাক্টিভ রিবেস',
+            code: 'git rebase -i HEAD~3',
+            explanation: 'শেষ ৩টি কমিট এডিট, স্কোয়াশ বা রিঅর্ডার করুন।',
+            example: {
+              scenario: 'অনেক ছোট কমিট একসাথে করতে চাই',
+              result: 'এডিটর খুলবে যেখানে pick, squash, edit অপশন থাকবে'
+            }
+          },
+          {
+            title: 'চেরি-পিক',
+            code: 'git cherry-pick commit-hash',
+            explanation: 'অন্য ব্রাঞ্চ থেকে একটি নির্দিষ্ট কমিট নিয়ে আসুন।',
+            example: {
+              scenario: 'অন্য ব্রাঞ্চের একটি বাগফিক্স এই ব্রাঞ্চেও চাই',
+              result: 'git cherry-pick abc1234'
+            }
+          },
+          {
+            title: 'ব্লেম দেখুন',
+            code: 'git blame filename.txt',
+            explanation: 'ফাইলের প্রতিটি লাইন কে কখন লিখেছে তা দেখুন।',
+            example: {
+              scenario: 'কোন লাইনে বাগ আছে, কে লিখেছে জানতে চাই',
+              result: 'প্রতি লাইনের পাশে author এবং commit hash দেখাবে'
+            }
+          },
+          {
+            title: 'বিসেক্ট শুরু',
+            code: 'git bisect start',
+            explanation: 'বাইনারি সার্চ দিয়ে বাগ কোন কমিটে এসেছে খুঁজুন।',
+            problem: {
+              issue: 'কোন কমিটে বাগ এসেছে জানি না, অনেক কমিট আছে',
+              solution: 'git bisect ব্যবহার করে দ্রুত বাগি কমিট খুঁজুন'
+            }
+          },
+          {
+            title: 'ট্যাগ তৈরি',
+            code: 'git tag v1.0.0',
+            explanation: 'বর্তমান কমিটে একটি ট্যাগ তৈরি করুন।',
+            example: {
+              scenario: 'নতুন ভার্সন রিলিজ করার সময়',
+              result: 'git tag v2.1.0'
+            }
+          },
+          {
+            title: 'ট্যাগ পুশ',
+            code: 'git push origin --tags',
+            explanation: 'সব ট্যাগ রিমোট রিপোজিটরিতে পুশ করুন।',
+            example: {
+              scenario: 'GitHub এ রিলিজ ট্যাগ দেখাতে',
+              result: 'সব ট্যাগ GitHub এ দেখা যাবে'
+            }
+          }
+        ]
+      },
+      {
+        id: 'common-problems',
+        title: 'সাধারণ সমস্যা ও সমাধান',
+        icon: 'fas fa-tools',
+        description: 'প্রতিদিনের কাজে আসা সমস্যা এবং তার সমাধান',
+        commands: [
+          {
+            title: 'পুশ রিজেক্ট হচ্ছে',
+            code: 'git pull origin main\ngit push origin main',
+            explanation: 'রিমোটে নতুন কমিট আছে, প্রথমে pull করে তারপর push করুন।',
+            problem: {
+              issue: 'git push করতে গিয়ে "rejected" এরর আসছে',
+              solution: 'প্রথমে git pull করে রিমোটের পরিবর্তন নিয়ে আসুন, তারপর push করুন'
+            }
+          },
+          {
+            title: 'ভুল ব্রাঞ্চে কমিট',
+            code: 'git log --oneline -1\ngit reset --soft HEAD~1\ngit checkout correct-branch\ngit commit -m "message"',
+            explanation: 'ভুল ব্রাঞ্চে কমিট করলে সেটা সঠিক ব্রাঞ্চে নিয়ে যান।',
+            problem: {
+              issue: 'main ব্রাঞ্চে কমিট করেছি কিন্তু feature ব্রাঞ্চে করার কথা ছিল',
+              solution: 'কমিট আন্ডু করে সঠিক ব্রাঞ্চে গিয়ে আবার কমিট করুন'
+            }
+          },
+          {
+            title: 'বড় ফাইল এরর',
+            code: 'git rm --cached large-file.zip\necho "large-file.zip" >> .gitignore\ngit add .gitignore\ngit commit -m "Remove large file"',
+            explanation: 'বড় ফাইল Git এ add করলে সেটা সরিয়ে .gitignore এ যোগ করুন।',
+            problem: {
+              issue: 'ভুল করে বড় ফাইল add করেছি, GitHub এ push হচ্ছে না',
+              solution: 'ফাইল unstage করে .gitignore এ যোগ করুন'
+            }
+          },
+          {
+            title: 'কমিট মেসেজ ভুল',
+            code: 'git commit --amend -m "সঠিক মেসেজ"',
+            explanation: 'শেষ কমিটের মেসেজ পরিবর্তন করুন।',
+            example: {
+              scenario: 'কমিট মেসেজে টাইপো আছে',
+              result: 'git commit --amend -m "Fix login validation bug"'
+            }
+          },
+          {
+            title: 'ফাইল ট্র্যাকিং বন্ধ',
+            code: 'git rm --cached filename.txt\necho "filename.txt" >> .gitignore',
+            explanation: 'একটি ফাইল Git ট্র্যাকিং থেকে সরিয়ে নিন কিন্তু ডিলিট করবেন না।',
+            problem: {
+              issue: 'config ফাইল Git এ ট্র্যাক হচ্ছে কিন্তু হওয়া উচিত না',
+              solution: 'ফাইল untrack করে .gitignore এ যোগ করুন'
+            }
+          },
+          {
+            title: 'পাসওয়ার্ড সমস্যা',
+            code: 'git config --global credential.helper store',
+            explanation: 'Git পাসওয়ার্ড সেভ করার জন্য credential helper সেট করুন।',
+            problem: {
+              issue: 'বারবার GitHub পাসওয়ার্ড চাইছে',
+              solution: 'Personal Access Token ব্যবহার করুন এবং credential helper সেট করুন'
+            }
+          },
+          {
+            title: 'লাইন এন্ডিং সমস্যা',
+            code: 'git config --global core.autocrlf true',
+            explanation: 'Windows এ লাইন এন্ডিং সমস্যা সমাধানের জন্য।',
+            problem: {
+              issue: 'Windows এবং Linux এর মধ্যে ফাইল শেয়ার করতে সমস্যা',
+              solution: 'autocrlf সেট করে লাইন এন্ডিং অটো কনভার্ট করুন'
+            }
+          }
+        ]
+      }
+    ];
+
+    // Search functionality
+    function initializeSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const sectionsContainer = document.getElementById('gitSections');
+      const noResults = document.getElementById('noResults');
+
+      // Render all sections initially
+      renderSections(gitSections);
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        
+        if (query === '') {
+          renderSections(gitSections);
+          noResults.style.display = 'none';
+          return;
+        }
+
+        const filteredSections = gitSections.map(section => {
+          const matchingCommands = section.commands.filter(command => {
+            return command.title.toLowerCase().includes(query) ||
+                   command.code.toLowerCase().includes(query) ||
+                   command.explanation.toLowerCase().includes(query) ||
+                   (command.example && (
+                     command.example.scenario.toLowerCase().includes(query) ||
+                     command.example.result.toLowerCase().includes(query)
+                   )) ||
+                   (command.problem && (
+                     command.problem.issue.toLowerCase().includes(query) ||
+                     command.problem.solution.toLowerCase().includes(query)
+                   ));
+          });
+
+          if (matchingCommands.length > 0 || 
+              section.title.toLowerCase().includes(query) ||
+              section.description.toLowerCase().includes(query)) {
+            return {
+              ...section,
+              commands: matchingCommands.length > 0 ? matchingCommands : section.commands
+            };
+          }
+          return null;
+        }).filter(section => section !== null);
+
+        if (filteredSections.length === 0) {
+          sectionsContainer.innerHTML = '';
+          noResults.style.display = 'block';
+        } else {
+          renderSections(filteredSections);
+          noResults.style.display = 'none';
+        }
+      });
+    }
+
+    // Render sections
+    function renderSections(sections) {
+      const container = document.getElementById('gitSections');
+      container.innerHTML = '';
+
+      sections.forEach(section => {
+        const sectionElement = createSectionElement(section);
+        container.appendChild(sectionElement);
+      });
+    }
+
+    // Create section element
+    function createSectionElement(section) {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'git-section';
+      sectionDiv.id = section.id;
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'section-header';
+      headerDiv.innerHTML = `
+        <h2 class="section-title">
+          <i class="${section.icon}"></i>
+          ${section.title}
+        </h2>
+        <p class="section-description">${section.description}</p>
+      `;
+
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'section-content';
+
+      section.commands.forEach(command => {
+        const commandDiv = document.createElement('div');
+        commandDiv.className = 'command-item';
+        
+        let commandHTML = `
+          <h4 class="command-title">${command.title}</h4>
+          <div class="command-code">${command.code.replaceAll('\n', "<br>")}</div>
+          <p class="command-explanation">${command.explanation}</p>
+        `;
+
+        if (command.example) {
+          commandHTML += `
+            <div class="example-scenario">
+              <div class="scenario-title">
+                <i class="fas fa-lightbulb"></i>
+                উদাহরণ
+              </div>
+              <p><strong>পরিস্থিতি:</strong> ${command.example.scenario}</p>
+              <p><strong>ফলাফল:</strong> ${command.example.result}</p>
+            </div>
+          `;
+        }
+
+        if (command.problem) {
+          commandHTML += `
+            <div class="problem-scenario">
+              <div class="problem-title">
+                <i class="fas fa-exclamation-circle"></i>
+                সমস্যা
+              </div>
+              <p><strong>সমস্যা:</strong> ${command.problem.issue}</p>
+              <div class="solution-box">
+                <div class="solution-title">
+                  <i class="fas fa-check-circle"></i>
+                  সমাধান
+                </div>
+                <p>${command.problem.solution}</p>
+              </div>
+            </div>
+          `;
+        }
+
+        commandDiv.innerHTML = commandHTML;
+        contentDiv.appendChild(commandDiv);
+      });
+
+      sectionDiv.appendChild(headerDiv);
+      sectionDiv.appendChild(contentDiv);
+      return sectionDiv;
+    }
+
+    // Back to top functionality
+    function initializeBackToTop() {
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeSearch();
+      initializeBackToTop();
+    });
+  </script>
+</body>
+</html>

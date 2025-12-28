@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Commands শিখুন - সম্পূর্ণ গাইড</title>
+  
+  <!-- Meta tags for SEO -->
+  <meta name="description" content="Linux commands এর সম্পূর্ণ গাইড বাংলায়। সব ধরনের Linux কমান্ড, সমস্যা এবং সমাধান সহ বাস্তব উদাহরণ।">
+  <meta name="keywords" content="linux commands, linux tutorial bangla, linux শিখুন, terminal commands, bash commands">
+  <meta name="author" content="Md Mojahedul Islam">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/images/profile-1.png">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+  
+  <!-- Bootstrap CSS -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #9b87f5;
+      --primary-dark: #7E69AB;
+      --primary-light: #E5DEFF;
+      --dark: #333333;
+      --light: #FFFFFF;
+      --gray: #8E9196;
+      --light-gray: #F6F6F7;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --info: #17a2b8;
+      --linux-green: #00d084;
+      --terminal-bg: #1e1e1e;
+      --terminal-text: #00ff00;
+      --transition: all 0.3s ease;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      background-color: var(--light-gray);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', 'Noto Sans Bengali', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--linux-green), #00a86b);
+      color: var(--light);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-section {
+      background: var(--light);
+      padding: 40px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: 2px solid var(--primary-light);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--linux-green);
+      box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.2);
+    }
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--linux-green);
+      font-size: 1.2rem;
+    }
+
+    .content-section {
+      padding: 60px 0;
+    }
+
+    .linux-section {
+      background: var(--light);
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      height: fit-content;
+    }
+
+    .linux-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, rgba(0, 208, 132, 0.1), rgba(255, 255, 255, 0.8));
+      padding: 25px 30px;
+      border-bottom: 1px solid rgba(0, 208, 132, 0.2);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--linux-green);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-description {
+      color: var(--gray);
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    .section-content {
+      padding: 25px;
+    }
+
+    .command-item {
+      margin-bottom: 25px;
+      padding: 18px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      border-left: 4px solid var(--linux-green);
+    }
+
+    .command-title {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .command-code {
+      background: var(--terminal-bg);
+      color: var(--terminal-text);
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 12px 0;
+      overflow-x: auto;
+      border: 1px solid #333;
+    }
+
+    .command-explanation {
+      color: var(--gray);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .example-scenario {
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+
+    .scenario-title {
+      color: var(--success);
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .problem-scenario {
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+
+    .problem-title {
+      color: var(--danger);
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .solution-box {
+      background: rgba(23, 162, 184, 0.1);
+      border: 1px solid var(--info);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 8px;
+    }
+
+    .solution-title {
+      color: var(--info);
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 50px;
+      height: 50px;
+      background: var(--linux-green);
+      color: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #00a86b;
+      color: var(--light);
+      transform: translateY(-5px);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray);
+    }
+
+    .no-results i {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    /* Two column layout */
+    .sections-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .section-column {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 992px) {
+      .sections-row {
+        flex-direction: column;
+      }
+      
+      .section-column {
+        flex: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .header p {
+        font-size: 1rem;
+      }
+      
+      .section-content {
+        padding: 20px;
+      }
+      
+      .command-code {
+        font-size: 0.85rem;
+      }
+      
+      .command-item {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1><i class="fab fa-linux me-3"></i>Linux Commands শিখুন</h1>
+      <p>সম্পূর্ণ Linux কমান্ড গাইড বাংলায় - টার্মিনাল থেকে সিস্টেম অ্যাডমিনিস্ট্রেশন পর্যন্ত</p>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Linux কমান্ড বা সমস্যা খুঁজুন... (যেমন: ls, chmod, grep)">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <div class="container">
+      <div id="linuxSections">
+        <!-- Linux sections will be populated by JavaScript -->
+      </div>
+      
+      <!-- No Results Message -->
+      <div id="noResults" class="no-results" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h3>কোন ফলাফল পাওয়া যায়নি</h3>
+        <p>আপনার অনুসন্ধানের জন্য কোন Linux কমান্ড বা সমস্যা খুঁজে পাওয়া যায়নি।<br>অন্য কিছু খোঁজার চেষ্টা করুন।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript Libraries -->
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    // Linux commands data in Bengali
+    const linuxSections = [
+      {
+        id: 'file-directory',
+        title: 'ফাইল ও ডিরেক্টরি',
+        icon: 'fas fa-folder',
+        description: 'ফাইল এবং ফোল্ডার নিয়ে কাজ করার মৌলিক কমান্ড',
+        commands: [
+          {
+            title: 'ফাইল ও ফোল্ডার তালিকা দেখুন',
+            code: 'ls\nls -l\nls -la\nls -lh',
+            explanation: 'বর্তমান ডিরেক্টরির সব ফাইল ও ফোল্ডার দেখুন। -l বিস্তারিত, -a লুকানো ফাইল, -h মানুষের পড়ার উপযোগী সাইজ।',
+            example: {
+              scenario: 'কোন ফোল্ডারে কি কি ফাইল আছে দেখতে চাই',
+              result: 'ls -la দিলে সব ফাইল পারমিশন, সাইজ, তারিখ সহ দেখাবে'
+            }
+          },
+          {
+            title: 'ডিরেক্টরি পরিবর্তন',
+            code: 'cd /path/to/directory\ncd ..\ncd ~\ncd -',
+            explanation: 'অন্য ফোল্ডারে যান। .. মানে উপরের ফোল্ডার, ~ মানে হোম ফোল্ডার, - মানে আগের ফোল্ডার।',
+            example: {
+              scenario: 'Documents ফোল্ডারে যেতে চাই',
+              result: 'cd ~/Documents অথবা cd /home/username/Documents'
+            }
+          },
+          {
+            title: 'বর্তমান ডিরেক্টরি দেখুন',
+            code: 'pwd',
+            explanation: 'আপনি এখন কোন ফোল্ডারে আছেন তা দেখুন।',
+            problem: {
+              issue: 'কোন ফোল্ডারে আছি বুঝতে পারছি না',
+              solution: 'pwd কমান্ড দিয়ে সম্পূর্ণ পাথ দেখুন'
+            }
+          },
+          {
+            title: 'নতুন ডিরেক্টরি তৈরি',
+            code: 'mkdir folder_name\nmkdir -p path/to/nested/folder',
+            explanation: 'নতুন ফোল্ডার তৈরি করুন। -p দিয়ে একসাথে অনেক লেভেলের ফোল্ডার তৈরি করুন।',
+            example: {
+              scenario: 'প্রজেক্টের জন্য ফোল্ডার স্ট্রাকচার তৈরি করতে',
+              result: 'mkdir -p project/src/components'
+            }
+          },
+          {
+            title: 'ফাইল কপি করুন',
+            code: 'cp source.txt destination.txt\ncp -r folder1 folder2\ncp *.txt backup/',
+            explanation: 'ফাইল কপি করুন। -r দিয়ে ফোল্ডার কপি করুন। * দিয়ে একাধিক ফাইল কপি করুন।',
+            example: {
+              scenario: 'সব .txt ফাইল backup ফোল্ডারে কপি করতে',
+              result: 'cp *.txt backup/'
+            }
+          },
+          {
+            title: 'ফাইল সরান/নাম পরিবর্তন',
+            code: 'mv old_name.txt new_name.txt\nmv file.txt /path/to/destination/',
+            explanation: 'ফাইল সরান বা নাম পরিবর্তন করুন। একই ফোল্ডারে নাম পরিবর্তন, ভিন্ন ফোল্ডারে সরানো।',
+            problem: {
+              issue: 'ভুল নামে ফাইল তৈরি করেছি',
+              solution: 'mv wrong_name.txt correct_name.txt দিয়ে নাম ঠিক করুন'
+            }
+          },
+          {
+            title: 'ফাইল ও ফোল্ডার মুছুন',
+            code: 'rm file.txt\nrm -r folder\nrm -rf folder\nrmdir empty_folder',
+            explanation: 'ফাইল মুছুন। -r দিয়ে ফোল্ডার মুছুন। -f জোর করে মুছুন। rmdir খালি ফোল্ডার মুছুন।',
+            problem: {
+              issue: 'ভুল ফাইল মুছে ফেলেছি',
+              solution: 'সাবধান! Linux এ recycle bin নেই। rm -rf খুব সাবধানে ব্যবহার করুন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'file-content',
+        title: 'ফাইল কন্টেন্ট দেখা',
+        icon: 'fas fa-file-alt',
+        description: 'ফাইলের ভিতরের তথ্য দেখা এবং এডিট করা',
+        commands: [
+          {
+            title: 'ফাইলের সব কন্টেন্ট দেখুন',
+            code: 'cat file.txt\nless file.txt\nmore file.txt',
+            explanation: 'cat সব কন্টেন্ট একসাথে দেখায়। less/more পেজ করে দেখায়। less এ q চেপে বের হন।',
+            example: {
+              scenario: 'লগ ফাইল দেখতে চাই',
+              result: 'less /var/log/syslog - স্ক্রল করে দেখতে পারবেন'
+            }
+          },
+          {
+            title: 'ফাইলের প্রথম/শেষ লাইন',
+            code: 'head file.txt\nhead -n 20 file.txt\ntail file.txt\ntail -f file.txt',
+            explanation: 'head প্রথম ১০ লাইন, tail শেষ ১০ লাইন দেখায়। -n দিয়ে সংখ্যা ঠিক করুন। -f দিয়ে রিয়েল টাইম দেখুন।',
+            example: {
+              scenario: 'লাইভ লগ মনিটর করতে চাই',
+              result: 'tail -f /var/log/apache2/access.log'
+            }
+          },
+          {
+            title: 'ফাইলে খোঁজ করুন',
+            code: 'grep "search_text" file.txt\ngrep -i "text" file.txt\ngrep -r "text" /path/',
+            explanation: 'ফাইলে নির্দিষ্ট টেক্সট খুঁজুন। -i case insensitive, -r রিকার্সিভ সার্চ।',
+            example: {
+              scenario: 'সব PHP ফাইলে "function" শব্দ খুঁজতে',
+              result: 'grep -r "function" *.php'
+            }
+          },
+          {
+            title: 'ফাইল এডিট করুন',
+            code: 'nano file.txt\nvim file.txt\nemacs file.txt',
+            explanation: 'ফাইল এডিট করার জন্য এডিটর খুলুন। nano সহজ, vim শক্তিশালী কিন্তু কঠিন।',
+            problem: {
+              issue: 'vim এ ঢুকে বের হতে পারছি না',
+              solution: 'Esc চেপে :q! লিখে Enter চাপুন। সেভ করতে :wq'
+            }
+          },
+          {
+            title: 'ফাইল তুলনা করুন',
+            code: 'diff file1.txt file2.txt\ndiff -u file1.txt file2.txt',
+            explanation: 'দুটি ফাইলের পার্থক্য দেখুন। -u unified format এ দেখায়।',
+            example: {
+              scenario: 'কনফিগ ফাইলের পুরাতন ও নতুন ভার্সন তুলনা করতে',
+              result: 'diff -u config.old config.new'
+            }
+          },
+          {
+            title: 'ফাইল সাইজ দেখুন',
+            code: 'du -h file.txt\ndu -sh folder\ndf -h',
+            explanation: 'du ফাইল/ফোল্ডার সাইজ, df ডিস্ক স্পেস দেখায়। -h মানুষের পড়ার উপযোগী।',
+            example: {
+              scenario: 'কোন ফোল্ডার বেশি জায়গা নিচ্ছে জানতে',
+              result: 'du -sh * | sort -hr'
+            }
+          }
+        ]
+      },
+      {
+        id: 'permissions',
+        title: 'পারমিশন ও মালিকানা',
+        icon: 'fas fa-lock',
+        description: 'ফাইল পারমিশন এবং মালিকানা পরিবর্তন',
+        commands: [
+          {
+            title: 'পারমিশন দেখুন',
+            code: 'ls -l\nstat file.txt',
+            explanation: 'ফাইলের পারমিশন দেখুন। rwx = read, write, execute। প্রথম তিনটি owner, পরের তিনটি group, শেষ তিনটি others।',
+            example: {
+              scenario: 'ফাইলের পারমিশন চেক করতে',
+              result: '-rw-r--r-- মানে owner পড়তে ও লিখতে পারে, অন্যরা শুধু পড়তে পারে'
+            }
+          },
+          {
+            title: 'পারমিশন পরিবর্তন (সংখ্যা)',
+            code: 'chmod 755 file.txt\nchmod 644 file.txt\nchmod 777 folder',
+            explanation: '755 = rwxr-xr-x, 644 = rw-r--r--, 777 = rwxrwxrwx। প্রথম সংখ্যা owner, দ্বিতীয় group, তৃতীয় others।',
+            example: {
+              scenario: 'স্ক্রিপ্ট ফাইল executable করতে',
+              result: 'chmod 755 script.sh'
+            }
+          },
+          {
+            title: 'পারমিশন পরিবর্তন (অক্ষর)',
+            code: 'chmod +x file.txt\nchmod u+w file.txt\nchmod go-r file.txt',
+            explanation: '+x execute যোগ, u+w user এর জন্য write যোগ, go-r group ও others থেকে read সরান।',
+            problem: {
+              issue: 'স্ক্রিপ্ট রান হচ্ছে না "Permission denied" এরর',
+              solution: 'chmod +x script.sh দিয়ে execute পারমিশন দিন'
+            }
+          },
+          {
+            title: 'মালিকানা পরিবর্তন',
+            code: 'sudo chown user:group file.txt\nsudo chown -R user:group folder',
+            explanation: 'ফাইলের মালিক ও গ্রুপ পরিবর্তন করুন। -R রিকার্সিভলি ফোল্ডারের সব ফাইলে প্রয়োগ।',
+            example: {
+              scenario: 'ওয়েব ফাইলের মালিকানা www-data করতে',
+              result: 'sudo chown -R www-data:www-data /var/www/html'
+            }
+          },
+          {
+            title: 'সুডো ব্যবহার',
+            code: 'sudo command\nsudo -u username command\nsudo su',
+            explanation: 'অ্যাডমিন অধিকার দিয়ে কমান্ড চালান। -u দিয়ে অন্য ইউজার হিসেবে, su দিয়ে root হন।',
+            problem: {
+              issue: 'সিস্টেম ফাইল এডিট করতে পারছি না',
+              solution: 'sudo nano /etc/hosts - sudo দিয়ে এডিটর চালান'
+            }
+          }
+        ]
+      },
+      {
+        id: 'process-management',
+        title: 'প্রসেস ম্যানেজমেন্ট',
+        icon: 'fas fa-tasks',
+        description: 'চলমান প্রোগ্রাম নিয়ন্ত্রণ ও মনিটরিং',
+        commands: [
+          {
+            title: 'চলমান প্রসেস দেখুন',
+            code: 'ps aux\ntop\nhtop\nps -ef | grep process_name',
+            explanation: 'ps সব প্রসেস দেখায়, top রিয়েল টাইম মনিটরিং, htop আরো সুন্দর ভার্সন।',
+            example: {
+              scenario: 'কোন প্রোগ্রাম বেশি CPU ব্যবহার করছে জানতে',
+              result: 'top চালিয়ে CPU% কলাম দেখুন'
+            }
+          },
+          {
+            title: 'প্রসেস বন্ধ করুন',
+            code: 'kill PID\nkill -9 PID\nkillall process_name\npkill process_name',
+            explanation: 'kill দিয়ে প্রসেস বন্ধ করুন। -9 জোর করে বন্ধ। killall নাম দিয়ে বন্ধ।',
+            problem: {
+              issue: 'Firefox হ্যাং হয়ে গেছে, বন্ধ হচ্ছে না',
+              solution: 'killall firefox অথবা ps aux | grep firefox দেখে PID নিয়ে kill -9 PID'
+            }
+          },
+          {
+            title: 'ব্যাকগ্রাউন্ডে চালান',
+            code: 'command &\nnohup command &\nscreen -S session_name\ntmux',
+            explanation: '& দিয়ে ব্যাকগ্রাউন্ডে চালান। nohup লগআউটের পরেও চলবে। screen/tmux সেশন ম্যানেজার।',
+            example: {
+              scenario: 'বড় ফাইল ডাউনলোড করতে চাই কিন্তু টার্মিনাল বন্ধ করতে হবে',
+              result: 'nohup wget http://example.com/bigfile.zip &'
+            }
+          },
+          {
+            title: 'জব কন্ট্রোল',
+            code: 'jobs\nfg %1\nbg %1\nCtrl+Z\nCtrl+C',
+            explanation: 'jobs চলমান জব দেখায়, fg ফোরগ্রাউন্ডে আনে, bg ব্যাকগ্রাউন্ডে পাঠায়। Ctrl+Z পজ, Ctrl+C বন্ধ।',
+            example: {
+              scenario: 'এডিটর চালু রেখে অন্য কাজ করতে চাই',
+              result: 'nano file.txt চালু অবস্থায় Ctrl+Z চেপে bg দিন'
+            }
+          },
+          {
+            title: 'সিস্টেম রিসোর্স দেখুন',
+            code: 'free -h\ndf -h\nuptime\nw\nwho',
+            explanation: 'free RAM দেখায়, df ডিস্ক স্পেস, uptime সিস্টেম কতক্ষণ চালু, w/who কে লগইন আছে।',
+            example: {
+              scenario: 'সার্ভার স্লো লাগছে, রিসোর্স চেক করতে চাই',
+              result: 'free -h && df -h && top'
+            }
+          }
+        ]
+      },
+      {
+        id: 'network-commands',
+        title: 'নেটওয়ার্ক কমান্ড',
+        icon: 'fas fa-network-wired',
+        description: 'নেটওয়ার্ক কানেকশন ও ট্রাবলশুটিং',
+        commands: [
+          {
+            title: 'নেটওয়ার্ক কানেকশন দেখুন',
+            code: 'ping google.com\nping -c 4 8.8.8.8\ntraceroute google.com',
+            explanation: 'ping কানেকশন টেস্ট করে, -c সংখ্যা নির্দিষ্ট করে। traceroute রুট দেখায়।',
+            example: {
+              scenario: 'ইন্টারনেট কানেকশন আছে কিনা চেক করতে',
+              result: 'ping -c 4 8.8.8.8'
+            }
+          },
+          {
+            title: 'IP ও নেটওয়ার্ক ইনফো',
+            code: 'ifconfig\nip addr show\nhostname -I\ncurl ifconfig.me',
+            explanation: 'ifconfig/ip addr লোকাল IP দেখায়, hostname -I সব IP, curl ifconfig.me পাবলিক IP।',
+            example: {
+              scenario: 'আমার পাবলিক IP কি জানতে চাই',
+              result: 'curl ifconfig.me'
+            }
+          },
+          {
+            title: 'পোর্ট ও কানেকশন',
+            code: 'netstat -tuln\nss -tuln\nlsof -i :80\nnmap localhost',
+            explanation: 'netstat/ss খোলা পোর্ট দেখায়, lsof নির্দিষ্ট পোর্ট কে ব্যবহার করছে, nmap পোর্ট স্ক্যান।',
+            problem: {
+              issue: 'ওয়েব সার্ভার চালু কিন্তু ব্রাউজারে খুলছে না',
+              solution: 'netstat -tuln | grep :80 দেখুন পোর্ট 80 খোলা আছে কিনা'
+            }
+          },
+          {
+            title: 'ফাইল ডাউনলোড',
+            code: 'wget http://example.com/file.zip\ncurl -O http://example.com/file.zip\ncurl -L -o file.zip http://short.url',
+            explanation: 'wget/curl দিয়ে ফাইল ডাউনলোড করুন। -O মূল নাম রাখে, -o নতুন নাম দেয়, -L redirect ফলো করে।',
+            example: {
+              scenario: 'GitHub থেকে ফাইল ডাউনলোড করতে',
+              result: 'wget https://github.com/user/repo/archive/main.zip'
+            }
+          },
+          {
+            title: 'SSH কানেকশন',
+            code: 'ssh user@server.com\nssh -p 2222 user@server.com\nscp file.txt user@server:/path/',
+            explanation: 'ssh রিমোট সার্ভারে লগইন, -p পোর্ট নির্দিষ্ট করে। scp ফাইল কপি করে।',
+            example: {
+              scenario: 'সার্ভারে ফাইল আপলোড করতে',
+              result: 'scp website.zip user@server.com:/var/www/'
+            }
+          }
+        ]
+      },
+      {
+        id: 'system-info',
+        title: 'সিস্টেম ইনফরমেশন',
+        icon: 'fas fa-info-circle',
+        description: 'সিস্টেমের বিস্তারিত তথ্য দেখা',
+        commands: [
+          {
+            title: 'সিস্টেম তথ্য',
+            code: 'uname -a\nlsb_release -a\nhostnamectl\ncat /etc/os-release',
+            explanation: 'uname কার্নেল ইনফো, lsb_release OS ভার্সন, hostnamectl সিস্টেম ইনফো দেখায়।',
+            example: {
+              scenario: 'কোন Ubuntu ভার্সন চালাচ্ছি জানতে',
+              result: 'lsb_release -a'
+            }
+          },
+          {
+            title: 'হার্ডওয়্যার তথ্য',
+            code: 'lscpu\nlsmem\nlsblk\nlsusb\nlspci',
+            explanation: 'CPU, মেমরি, ডিস্ক, USB, PCI ডিভাইসের তথ্য দেখুন।',
+            example: {
+              scenario: 'কত কোর CPU আছে জানতে',
+              result: 'lscpu | grep "CPU(s)"'
+            }
+          },
+          {
+            title: 'ডিস্ক ও পার্টিশন',
+            code: 'fdisk -l\nlsblk\ndf -h\ndu -sh /*',
+            explanation: 'fdisk পার্টিশন দেখায়, lsblk ব্লক ডিভাইস, df মাউন্ট পয়েন্ট, du ফোল্ডার সাইজ।',
+            problem: {
+              issue: 'ডিস্ক ফুল হয়ে গেছে, কোথায় বেশি জায়গা নিচ্ছে জানতে চাই',
+              solution: 'du -sh /* | sort -hr | head -10'
+            }
+          },
+          {
+            title: 'মেমরি ও CPU ব্যবহার',
+            code: 'free -h\nvmstat\niostat\nsar -u 1 5',
+            explanation: 'free মেমরি, vmstat ভার্চুয়াল মেমরি, iostat I/O স্ট্যাট, sar সিস্টেম অ্যাক্টিভিটি।',
+            example: {
+              scenario: 'সার্ভার পারফরমেন্স মনিটর করতে',
+              result: 'vmstat 1 10 - প্রতি সেকেন্ডে 10 বার দেখাবে'
+            }
+          }
+        ]
+      },
+      {
+        id: 'archive-compression',
+        title: 'আর্কাইভ ও কম্প্রেশন',
+        icon: 'fas fa-file-archive',
+        description: 'ফাইল কম্প্রেস ও এক্সট্র্যাক্ট করা',
+        commands: [
+          {
+            title: 'tar আর্কাইভ',
+            code: 'tar -czf archive.tar.gz folder/\ntar -xzf archive.tar.gz\ntar -tzf archive.tar.gz',
+            explanation: '-c তৈরি, -x এক্সট্র্যাক্ট, -t তালিকা দেখা, -z gzip কম্প্রেশন, -f ফাইল নাম।',
+            example: {
+              scenario: 'প্রজেক্ট ফোল্ডার ব্যাকআপ করতে',
+              result: 'tar -czf project_backup.tar.gz project/'
+            }
+          },
+          {
+            title: 'zip ফাইল',
+            code: 'zip -r archive.zip folder/\nunzip archive.zip\nunzip -l archive.zip',
+            explanation: 'zip দিয়ে কম্প্রেস, unzip দিয়ে এক্সট্র্যাক্ট। -r রিকার্সিভ, -l তালিকা দেখা।',
+            example: {
+              scenario: 'ওয়েবসাইট ফাইল zip করতে',
+              result: 'zip -r website.zip public_html/'
+            }
+          },
+          {
+            title: 'অন্যান্য কম্প্রেশন',
+            code: 'gzip file.txt\ngunzip file.txt.gz\nbzip2 file.txt\nbunzip2 file.txt.bz2',
+            explanation: 'gzip/gunzip এবং bzip2/bunzip2 দিয়ে একক ফাইল কম্প্রেস/ডিকম্প্রেস।',
+            problem: {
+              issue: 'বড় লগ ফাইল জায়গা নিচ্ছে',
+              solution: 'gzip /var/log/old.log দিয়ে কম্প্রেস করুন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'text-processing',
+        title: 'টেক্সট প্রসেসিং',
+        icon: 'fas fa-edit',
+        description: 'টেক্সট ফাইল এডিট ও প্রসেসিং',
+        commands: [
+          {
+            title: 'টেক্সট সার্চ ও রিপ্লেস',
+            code: 'sed "s/old/new/g" file.txt\nsed -i "s/old/new/g" file.txt\nawk \'{print $1}\' file.txt',
+            explanation: 'sed টেক্সট রিপ্লেস করে, -i ফাইলে সেভ করে। awk কলাম প্রসেসিং করে।',
+            example: {
+              scenario: 'সব .php ফাইলে localhost কে example.com করতে',
+              result: 'sed -i "s/localhost/example.com/g" *.php'
+            }
+          },
+          {
+            title: 'লাইন কাউন্ট ও সর্ট',
+            code: 'wc -l file.txt\nsort file.txt\nsort -n numbers.txt\nuniq file.txt',
+            explanation: 'wc লাইন গুনে, sort সর্ট করে, -n সংখ্যা অনুযায়ী, uniq ডুপ্লিকেট সরায়।',
+            example: {
+              scenario: 'লগ ফাইলে কত লাইন আছে জানতে',
+              result: 'wc -l /var/log/apache2/access.log'
+            }
+          },
+          {
+            title: 'ফাইল জয়েন ও স্প্লিট',
+            code: 'cat file1.txt file2.txt > combined.txt\nsplit -l 1000 bigfile.txt\ncut -d"," -f1,3 data.csv',
+            explanation: 'cat ফাইল জয়েন করে, split বড় ফাইল ভাগ করে, cut নির্দিষ্ট কলাম নেয়।',
+            example: {
+              scenario: 'CSV ফাইল থেকে শুধু নাম ও ইমেইল কলাম নিতে',
+              result: 'cut -d"," -f1,2 users.csv'
+            }
+          }
+        ]
+      },
+      {
+        id: 'package-management',
+        title: 'প্যাকেজ ম্যানেজমেন্ট',
+        icon: 'fas fa-box',
+        description: 'সফটওয়্যার ইনস্টল ও আপডেট',
+        commands: [
+          {
+            title: 'Ubuntu/Debian (apt)',
+            code: 'sudo apt update\nsudo apt upgrade\nsudo apt install package_name\nsudo apt remove package_name',
+            explanation: 'update প্যাকেজ তালিকা আপডেট, upgrade সব প্যাকেজ আপগ্রেড, install ইনস্টল, remove আনইনস্টল।',
+            example: {
+              scenario: 'নতুন সফটওয়্যার ইনস্টল করার আগে',
+              result: 'sudo apt update && sudo apt install nginx'
+            }
+          },
+          {
+            title: 'CentOS/RHEL (yum/dnf)',
+            code: 'sudo yum update\nsudo yum install package_name\nsudo dnf install package_name',
+            explanation: 'yum পুরাতন CentOS এ, dnf নতুন ভার্সনে। একই কাজ করে।',
+            example: {
+              scenario: 'CentOS এ Apache ইনস্টল করতে',
+              result: 'sudo yum install httpd'
+            }
+          },
+          {
+            title: 'প্যাকেজ খোঁজা ও তথ্য',
+            code: 'apt search package_name\napt show package_name\ndpkg -l | grep package',
+            explanation: 'search প্যাকেজ খোঁজে, show বিস্তারিত দেখায়, dpkg -l ইনস্টল করা প্যাকেজ দেখায়।',
+            problem: {
+              issue: 'কোন প্যাকেজ ইনস্টল আছে কিনা জানতে চাই',
+              solution: 'dpkg -l | grep package_name'
+            }
+          },
+          {
+            title: 'Snap প্যাকেজ',
+            code: 'sudo snap install package_name\nsnap list\nsudo snap remove package_name',
+            explanation: 'Snap universal প্যাকেজ সিস্টেম। সব Linux ডিস্ট্রোতে কাজ করে।',
+            example: {
+              scenario: 'VS Code ইনস্টল করতে',
+              result: 'sudo snap install code --classic'
+            }
+          }
+        ]
+      },
+      {
+        id: 'service-management',
+        title: 'সার্ভিস ম্যানেজমেন্ট',
+        icon: 'fas fa-cogs',
+        description: 'সিস্টেম সার্ভিস নিয়ন্ত্রণ',
+        commands: [
+          {
+            title: 'systemctl কমান্ড',
+            code: 'sudo systemctl start service_name\nsudo systemctl stop service_name\nsudo systemctl restart service_name\nsudo systemctl status service_name',
+            explanation: 'start সার্ভিস চালু, stop বন্ধ, restart পুনরায় চালু, status অবস্থা দেখা।',
+            example: {
+              scenario: 'Apache ওয়েব সার্ভার রিস্টার্ট করতে',
+              result: 'sudo systemctl restart apache2'
+            }
+          },
+          {
+            title: 'সার্ভিস enable/disable',
+            code: 'sudo systemctl enable service_name\nsudo systemctl disable service_name\nsystemctl is-enabled service_name',
+            explanation: 'enable বুট টাইমে অটো স্টার্ট, disable অটো স্টার্ট বন্ধ, is-enabled চেক করা।',
+            example: {
+              scenario: 'MySQL সার্ভার বুট টাইমে চালু হওয়া বন্ধ করতে',
+              result: 'sudo systemctl disable mysql'
+            }
+          },
+          {
+            title: 'সার্ভিস তালিকা ও লগ',
+            code: 'systemctl list-units --type=service\njournalctl -u service_name\njournalctl -f',
+            explanation: 'list-units সব সার্ভিস দেখায়, journalctl লগ দেখায়, -u নির্দিষ্ট সার্ভিস, -f রিয়েল টাইম।',
+            problem: {
+              issue: 'সার্ভিস স্টার্ট হচ্ছে না, এরর জানতে চাই',
+              solution: 'journalctl -u service_name -n 50'
+            }
+          }
+        ]
+      },
+      {
+        id: 'environment-variables',
+        title: 'এনভায়রনমেন্ট ভেরিয়েবল',
+        icon: 'fas fa-sliders-h',
+        description: 'সিস্টেম ভেরিয়েবল সেট ও ব্যবহার',
+        commands: [
+          {
+            title: 'ভেরিয়েবল দেখা ও সেট',
+            code: 'echo $PATH\necho $HOME\nexport MY_VAR="value"\nenv | grep MY_VAR',
+            explanation: 'echo দিয়ে ভেরিয়েবল দেখুন, export দিয়ে সেট করুন, env সব ভেরিয়েবল দেখায়।',
+            example: {
+              scenario: 'PATH এ নতুন ডিরেক্টরি যোগ করতে',
+              result: 'export PATH=$PATH:/home/user/bin'
+            }
+          },
+          {
+            title: 'স্থায়ী ভেরিয়েবল সেট',
+            code: 'nano ~/.bashrc\necho \'export MY_VAR="value"\' >> ~/.bashrc\nsource ~/.bashrc',
+            explanation: '~/.bashrc ফাইলে ভেরিয়েবল লিখে source করলে স্থায়ী হয়।',
+            example: {
+              scenario: 'Java PATH স্থায়ীভাবে সেট করতে',
+              result: 'echo "export JAVA_HOME=/usr/lib/jvm/java-11" >> ~/.bashrc'
+            }
+          },
+          {
+            title: 'সিস্টেম ওয়াইড ভেরিয়েবল',
+            code: 'sudo nano /etc/environment\nsudo nano /etc/profile',
+            explanation: '/etc/environment সব ইউজারের জন্য ভেরিয়েবল, /etc/profile লগইন স্ক্রিপ্ট।',
+            problem: {
+              issue: 'সব ইউজারের জন্য একই ভেরিয়েবল সেট করতে চাই',
+              solution: 'sudo echo "MY_VAR=value" >> /etc/environment'
+            }
+          }
+        ]
+      },
+      {
+        id: 'cron-scheduling',
+        title: 'ক্রন জব শিডিউলিং',
+        icon: 'fas fa-clock',
+        description: 'অটোমেটিক টাস্ক শিডিউল করা',
+        commands: [
+          {
+            title: 'ক্রনট্যাব এডিট',
+            code: 'crontab -e\ncrontab -l\ncrontab -r',
+            explanation: '-e এডিট করুন, -l তালিকা দেখুন, -r সব মুছে দিন।',
+            example: {
+              scenario: 'প্রতিদিন রাত ২টায় ব্যাকআপ নিতে',
+              result: 'crontab -e তে লিখুন: 0 2 * * * /home/user/backup.sh'
+            }
+          },
+          {
+            title: 'ক্রন টাইম ফরম্যাট',
+            code: '# মিনিট ঘন্টা দিন মাস সপ্তাহ\n0 2 * * * command\n*/5 * * * * command\n0 0 1 * * command',
+            explanation: '৫টি ফিল্ড: মিনিট (0-59), ঘন্টা (0-23), দিন (1-31), মাস (1-12), সপ্তাহ (0-7)।',
+            example: {
+              scenario: 'প্রতি ৫ মিনিটে স্ক্রিপ্ট চালাতে',
+              result: '*/5 * * * * /path/to/script.sh'
+            }
+          },
+          {
+            title: 'সিস্টেম ক্রন',
+            code: 'sudo nano /etc/crontab\nls /etc/cron.daily/\nls /etc/cron.hourly/',
+            explanation: 'সিস্টেম লেভেল ক্রন জব। daily, hourly, weekly, monthly ফোল্ডারে স্ক্রিপ্ট রাখুন।',
+            problem: {
+              issue: 'ক্রন জব চলছে না',
+              solution: 'sudo service cron status চেক করুন এবং /var/log/syslog দেখুন'
+            }
+          }
+        ]
+      },
+      {
+        id: 'troubleshooting',
+        title: 'ট্রাবলশুটিং',
+        icon: 'fas fa-tools',
+        description: 'সাধারণ সমস্যা সমাধান',
+        commands: [
+          {
+            title: 'লগ ফাইল চেক',
+            code: 'tail -f /var/log/syslog\njournalctl -xe\ndmesg | tail\ncat /var/log/auth.log',
+            explanation: 'syslog সিস্টেম লগ, journalctl systemd লগ, dmesg কার্নেল মেসেজ, auth.log লগইন লগ।',
+            example: {
+              scenario: 'সিস্টেম ক্র্যাশ হয়েছে, কারণ জানতে চাই',
+              result: 'dmesg | tail -50'
+            }
+          },
+          {
+            title: 'ডিস্ক স্পেস সমস্যা',
+            code: 'df -h\ndu -sh /* | sort -hr\nfind / -size +100M 2>/dev/null\nncdu /',
+            explanation: 'df ডিস্ক স্পেস, du ফোল্ডার সাইজ, find বড় ফাইল খোঁজা, ncdu ইন্টারঅ্যাক্টিভ ডিস্ক ব্যবহার।',
+            problem: {
+              issue: 'ডিস্ক ফুল, কোন ফাইল মুছব বুঝতে পারছি না',
+              solution: 'ncdu / চালিয়ে বড় ফোল্ডার খুঁজুন'
+            }
+          },
+          {
+            title: 'নেটওয়ার্ক সমস্যা',
+            code: 'ping -c 4 8.8.8.8\nnslookup google.com\ndig google.com\nnetstat -rn',
+            explanation: 'ping কানেক্টিভিটি, nslookup/dig DNS রেজোলিউশন, netstat -rn রাউটিং টেবিল।',
+            problem: {
+              issue: 'ওয়েবসাইট খুলছে না কিন্তু ইন্টারনেট আছে',
+              solution: 'nslookup domain.com দেখুন DNS কাজ করছে কিনা'
+            }
+          },
+          {
+            title: 'পারফরমেন্স সমস্যা',
+            code: 'top\niotop\niftop\nsar -u 1 10\nvmstat 1 5',
+            explanation: 'top CPU/মেমরি, iotop ডিস্ক I/O, iftop নেটওয়ার্ক, sar সিস্টেম পারফরমেন্স।',
+            example: {
+              scenario: 'সার্ভার স্লো, কোন প্রসেস সমস্যা করছে জানতে',
+              result: 'top চালিয়ে CPU% এবং %MEM দেখুন'
+            }
+          }
+        ]
+      }
+    ];
+    // Search functionality
+    function initializeSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const sectionsContainer = document.getElementById('linuxSections');
+      const noResults = document.getElementById('noResults');
+
+      // Render all sections initially
+      renderSections(linuxSections);
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        
+        if (query === '') {
+          renderSections(linuxSections);
+          noResults.style.display = 'none';
+          return;
+        }
+
+        const filteredSections = linuxSections.map(section => {
+          const matchingCommands = section.commands.filter(command => {
+            return command.title.toLowerCase().includes(query) ||
+                   command.code.toLowerCase().includes(query) ||
+                   command.explanation.toLowerCase().includes(query) ||
+                   (command.example && (
+                     command.example.scenario.toLowerCase().includes(query) ||
+                     command.example.result.toLowerCase().includes(query)
+                   )) ||
+                   (command.problem && (
+                     command.problem.issue.toLowerCase().includes(query) ||
+                     command.problem.solution.toLowerCase().includes(query)
+                   ));
+          });
+
+          if (matchingCommands.length > 0 || 
+              section.title.toLowerCase().includes(query) ||
+              section.description.toLowerCase().includes(query)) {
+            return {
+              ...section,
+              commands: matchingCommands.length > 0 ? matchingCommands : section.commands
+            };
+          }
+          return null;
+        }).filter(section => section !== null);
+
+        if (filteredSections.length === 0) {
+          sectionsContainer.innerHTML = '';
+          noResults.style.display = 'block';
+        } else {
+          renderSections(filteredSections);
+          noResults.style.display = 'none';
+        }
+      });
+    }
+
+    // Render sections in 2-column layout
+    function renderSections(sections) {
+      const container = document.getElementById('linuxSections');
+      container.innerHTML = '';
+
+      // Create row container
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'sections-row';
+
+      // Create two columns
+      const leftColumn = document.createElement('div');
+      leftColumn.className = 'section-column';
+      
+      const rightColumn = document.createElement('div');
+      rightColumn.className = 'section-column';
+
+      // Distribute sections between columns
+      sections.forEach((section, index) => {
+        const sectionElement = createSectionElement(section);
+        
+        if (index % 2 === 0) {
+          leftColumn.appendChild(sectionElement);
+        } else {
+          rightColumn.appendChild(sectionElement);
+        }
+      });
+
+      rowDiv.appendChild(leftColumn);
+      rowDiv.appendChild(rightColumn);
+      container.appendChild(rowDiv);
+    }
+
+    // Create section element
+    function createSectionElement(section) {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'linux-section';
+      sectionDiv.id = section.id;
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'section-header';
+      headerDiv.innerHTML = `
+        <h2 class="section-title">
+          <i class="${section.icon}"></i>
+          ${section.title}
+        </h2>
+        <p class="section-description">${section.description}</p>
+      `;
+
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'section-content';
+
+      section.commands.forEach(command => {
+        const commandDiv = document.createElement('div');
+        commandDiv.className = 'command-item';
+        
+        let commandHTML = `
+          <h4 class="command-title">${command.title}</h4>
+          <div class="command-code">${command.code.replaceAll('\n', "<br>")}</div>
+          <p class="command-explanation">${command.explanation}</p>
+        `;
+
+        if (command.example) {
+          commandHTML += `
+            <div class="example-scenario">
+              <div class="scenario-title">
+                <i class="fas fa-lightbulb"></i>
+                উদাহরণ
+              </div>
+              <p><strong>পরিস্থিতি:</strong> ${command.example.scenario}</p>
+              <p><strong>ফলাফল:</strong> ${command.example.result}</p>
+            </div>
+          `;
+        }
+
+        if (command.problem) {
+          commandHTML += `
+            <div class="problem-scenario">
+              <div class="problem-title">
+                <i class="fas fa-exclamation-circle"></i>
+                সমস্যা
+              </div>
+              <p><strong>সমস্যা:</strong> ${command.problem.issue}</p>
+              <div class="solution-box">
+                <div class="solution-title">
+                  <i class="fas fa-check-circle"></i>
+                  সমাধান
+                </div>
+                <p>${command.problem.solution}</p>
+              </div>
+            </div>
+          `;
+        }
+
+        commandDiv.innerHTML = commandHTML;
+        contentDiv.appendChild(commandDiv);
+      });
+
+      sectionDiv.appendChild(headerDiv);
+      sectionDiv.appendChild(contentDiv);
+      return sectionDiv;
+    }
+
+    // Back to top functionality
+    function initializeBackToTop() {
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeSearch();
+      initializeBackToTop();
+    });
+  </script>
+</body>
+</html>
