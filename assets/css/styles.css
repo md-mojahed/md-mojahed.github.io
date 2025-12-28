@@ -1058,50 +1058,65 @@ section {
   transform: translateY(-3px);
 }
 
-.contact-form .form-group {
-  margin-bottom: 20px;
+/* Contact CTA Section */
+.contact-cta {
+  background-color: var(--light);
+  padding: 15px 40px 10px 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--primary-light);
 }
 
-.contact-form label {
-  display: block;
-  margin-bottom: 8px;
+.contact-cta .lead {
+  font-size: 1.1rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.why-choose-me {
+  background-color: var(--light-gray);
+  padding: 25px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
   font-weight: 500;
+  color: var(--dark);
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: 1rem;
+.contact-methods {
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.contact-buttons .btn {
+  min-width: 180px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 12px 25px;
   transition: var(--transition);
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-light);
+.contact-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
-.contact-form .submit-btn {
-  width: 100%;
-  background-color: var(--primary);
-  color: var(--light);
-  padding: 12px;
+.response-time .alert {
+  border-radius: 10px;
   border: none;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.contact-form .submit-btn:hover {
-  background-color: var(--primary-dark);
+  background-color: rgba(13, 202, 240, 0.1);
+  color: var(--dark);
+  border-left: 4px solid #0dcaf0;
 }
 
 /* Footer */

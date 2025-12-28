@@ -202,48 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Projects data
     const projects = [
         {
-            id: 1,
-            title: "MParser PHP Package",
-            category: "package",
-            tags: ["PHP", "Composer", "String Parsing", "Open Source"],
-            description: "A powerful PHP package that simplifies parsing complex strings with custom tokens and expressions. Available on Packagist as mojahed/mparser."
-        },
-        {
-            id: 2,
-            title: "EduplusQR PHP SDK",
-            category: "package",
-            tags: ["PHP", "Go", "QR Code", "SDK"],
-            description: "Fast QR Code Generator PHP SDK with Go binary backend for high-performance QR code generation. Published as mojahed/eduplusqr."
-        },
-        {
-            id: 3,
-            title: "EduplusBarcode PHP SDK",
-            category: "package",
-            tags: ["PHP", "Go", "Barcode", "SDK"],
-            description: "Fast Barcode Generator PHP SDK with Go binary backend for efficient barcode generation. Available as mojahed/eduplusbarcode."
-        },
-        {
-            id: 4,
-            title: "Laravel QR & Barcode Package",
-            category: "package",
-            tags: ["Laravel", "PHP", "QR Code", "Barcode"],
-            description: "Laravel package for QR Code and Barcode generation using EduplusQR and EduplusBarcode with configurable binary paths. Published as eduplus/qr."
-        },
-        {
-            id: 5,
-            title: "Eduplus Archive SDK",
-            category: "package",
-            tags: ["PHP", "Laravel", "Archive System", "SDK"],
-            description: "PHP SDK for Eduplus Archive - Student Archive System with comprehensive document management capabilities. Available as eduplus/archive."
-        },
-        {
-            id: 6,
-            title: "Md's Filler Chrome Extension",
-            category: "app",
-            tags: ["JavaScript", "Chrome Extension", "Testing", "Automation"],
-            description: "Chrome extension that automatically fills web forms with realistic context fake data for testing and development purposes."
-        },
-        {
             id: 7,
             title: "Mohammadpur Preparatory School & College",
             category: "web",
@@ -305,6 +263,48 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "server",
             tags: ["Linode", "AWS", "WHM", "cPanel"],
             description: "Comprehensive server administration for Light Technologies including Linode VPS management, AWS cloud infrastructure, and cPanel/WHM server configuration and maintenance."
+        },
+                {
+            id: 1,
+            title: "MParser PHP Package",
+            category: "package",
+            tags: ["PHP", "Composer", "String Parsing", "Open Source"],
+            description: "A powerful PHP package that simplifies parsing complex strings with custom tokens and expressions. Available on Packagist as mojahed/mparser."
+        },
+        {
+            id: 2,
+            title: "EduplusQR PHP SDK",
+            category: "package",
+            tags: ["PHP", "Go", "QR Code", "SDK"],
+            description: "Fast QR Code Generator PHP SDK with Go binary backend for high-performance QR code generation. Published as mojahed/eduplusqr."
+        },
+        {
+            id: 3,
+            title: "EduplusBarcode PHP SDK",
+            category: "package",
+            tags: ["PHP", "Go", "Barcode", "SDK"],
+            description: "Fast Barcode Generator PHP SDK with Go binary backend for efficient barcode generation. Available as mojahed/eduplusbarcode."
+        },
+        {
+            id: 4,
+            title: "Laravel QR & Barcode Package",
+            category: "package",
+            tags: ["Laravel", "PHP", "QR Code", "Barcode"],
+            description: "Laravel package for QR Code and Barcode generation using EduplusQR and EduplusBarcode with configurable binary paths. Published as eduplus/qr."
+        },
+        {
+            id: 5,
+            title: "Eduplus Archive SDK",
+            category: "package",
+            tags: ["PHP", "Laravel", "Archive System", "SDK"],
+            description: "PHP SDK for Eduplus Archive - Student Archive System with comprehensive document management capabilities. Available as eduplus/archive."
+        },
+        {
+            id: 6,
+            title: "Md's Filler Chrome Extension",
+            category: "app",
+            tags: ["JavaScript", "Chrome Extension", "Testing", "Automation"],
+            description: "Chrome extension that automatically fills web forms with realistic context fake data for testing and development purposes."
         }
     ];
 
@@ -537,20 +537,6 @@ document.addEventListener('DOMContentLoaded', function () {
             showTestimonial(nextTestimonial);
         }, 5000);
     }
-
-    // Contact form submission
-    const contactForm = document.getElementById('contact-form');
-
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // In a real implementation, you would send the form data to a server
-        // For this demo, we'll just show a success alert
-        alert("Message sent! I'll get back to you soon.");
-
-        // Reset the form
-        contactForm.reset();
-    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
