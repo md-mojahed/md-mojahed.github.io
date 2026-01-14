@@ -904,7 +904,8 @@ section {
 }
 
 .testimonial-details {
-  display: flex;
+  /* display: flex; */
+  display: none !important;
   flex-direction: column;
   gap: 4px;
 }
