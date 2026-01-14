@@ -82,19 +82,6 @@ As a **Top Rated Freelancer on Upwork** and **Lead Software Engineer at Light Te
 
 ---
 
-## 📈 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=md-mojahed&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=9b87f5&icon_color=9b87f5&text_color=c9d1d9" alt="GitHub Stats" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=md-mojahed&theme=radical&hide_border=true&background=0D1117&ring=9b87f5&fire=9b87f5&currStreakLabel=9b87f5" alt="GitHub Streak" width="48%" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=md-mojahed&layout=compact&theme=radical&hide_border=true&bg_color=0D1117&title_color=9b87f5&text_color=c9d1d9" alt="Top Languages" width="48%" />
-</p>
-
----
-
 ## 🚀 Featured Projects
 
 ### 📦 Open Source Packages
@@ -123,7 +110,7 @@ As a **Top Rated Freelancer on Upwork** and **Lead Software Engineer at Light Te
 - **[Araf Baby Mart](https://arafbabymart.com)** - Full-featured e-commerce platform for baby products
 
 #### Mobile Applications
-- **People Engager** - Cross-platform mobile app (Android & iOS) for social networking
+- **People Engager** - Cross-platform mobile app (Android & iOS)
 - **Eduplus Student** - Educational mobile application for students (Android)
 
 ### 🖥️ Server Administration Projects
@@ -176,9 +163,5 @@ Explore more projects on my [GitHub repositories](https://github.com/md-mojahed?
 ---
 
 <p align="center">
-  <i>💡 I enjoy transforming complex real-world challenges into simple, elegant software solutions — from classroom to cloud ☁️</i>
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=md-mojahed&label=Profile%20Views&color=9b87f5&style=for-the-badge" alt="Profile Views" />
+  <i>💡 I enjoy transforming complex real-world challenges into simple, elegant software solutions ☁️</i>
 </p>
