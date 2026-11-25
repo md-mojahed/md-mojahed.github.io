@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-K2ZKFJGX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Md Mojahedul Islam — CTO & Lead Software Engineer</title>
+  <meta name="description" content="Md Mojahedul Islam — CTO & Lead Software Engineer at Light Technologies. Builds the Eduplus school platform, a 208-model publication ERP, and a suite of Go tools. Laravel, Go, Linux and security. Top Rated on Upwork.">
+  <meta property="og:title" content="Md Mojahedul Islam — CTO & Lead Software Engineer">
+  <meta property="og:image" content="assets/photo.jpg">
+  <meta name="google-site-verification" content="x8zB_ScItawZxNFVI-OKZkjAwJPtY9s0zU_kUV5xKTc" />
+  <link rel="icon" href="assets/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Pick the theme before anything paints, so there is no flash.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <noscript>This portfolio needs JavaScript. Contact: dev.mojahedul@gmail.com · +880 1861 583588</noscript>
+  <script src="main.js"></script>
+  <script>
+    var app = Elm.Main.init({
+      node: document.getElementById('app'),
+      flags: { dark: document.documentElement.getAttribute('data-theme') === 'dark' }
+    });
+
+    app.ports.saveTheme.subscribe(function (theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      try { localStorage.setItem('theme', theme); } catch (e) {}
+    });
+
+    app.ports.copyText.subscribe(function (text) {
+      if (navigator.clipboard) { navigator.clipboard.writeText(text).catch(function () {}); }
+    });
+
+    // Scroll-spy: tell Elm which section is in the middle of the screen.
+    requestAnimationFrame(function () {
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) app.ports.activeSection.send(e.target.id);
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
+    });
+  </script>
+</body>
+</html>

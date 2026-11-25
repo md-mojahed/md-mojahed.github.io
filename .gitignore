@@ -1,0 +1,77 @@
+# ---------------------------------------------------------------
+# Elm
+# ---------------------------------------------------------------
+# Compiler cache: rebuilt on every `elm make`, never commit it.
+elm-stuff/
+# Optimized/minified output the deploy workflow builds in CI.
+dist/
+# NOTE: main.js stays tracked on purpose so the site also works when
+# GitHub Pages serves straight from the branch. If you only deploy via
+# the GitHub Actions workflow, you can uncomment the next line.
+# main.js
+
+# ---------------------------------------------------------------
+# Node / tooling (in case npm, terser or a dev server is used later)
+# ---------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.cache/
+.parcel-cache/
+
+# ---------------------------------------------------------------
+# Python (helper scripts, local venvs)
+# ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---------------------------------------------------------------
+# Secrets & local config: never commit these
+# ---------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.claude/settings.local.json
+
+# ---------------------------------------------------------------
+# Editors & IDEs
+# ---------------------------------------------------------------
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.kiro/
+
+# ---------------------------------------------------------------
+# OS junk
+# ---------------------------------------------------------------
+.DS_Store
+.AppleDouble
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.directory
+.Trash-*
+
+# ---------------------------------------------------------------
+# Logs, temp files, local test pages
+# ---------------------------------------------------------------
+*.log
+*.tmp
+*.bak
+tmp/
+temp/
+# throwaway game test/debug pages
+game/t_*.html
+game/*.debug.html

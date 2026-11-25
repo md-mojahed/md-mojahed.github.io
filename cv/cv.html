@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Md Mojahedul Islam — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 11mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 9.1pt/1.42 "Inter", sans-serif; color: #1e293b; }
+  header { display: flex; gap: 16px; align-items: center; border-bottom: 2px solid #003366; padding-bottom: 10px; margin-bottom: 10px; }
+  header img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #003366; }
+  h1 { font-size: 20pt; color: #003366; font-weight: 800; letter-spacing: -.3px; }
+  .role { font-weight: 600; font-size: 10.5pt; }
+  .contact { color: #475569; font-size: 8.6pt; margin-top: 2px; }
+  .contact a { color: #0369a1; text-decoration: none; }
+  h2 { font-size: 10.5pt; color: #003366; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; margin: 9px 0 5px; }
+  .item { margin-bottom: 5px; }
+  .head { display: flex; justify-content: space-between; font-weight: 700; }
+  .date { font-weight: 600; color: #0284c7; font-size: 8.6pt; }
+  .sub { color: #475569; font-style: italic; }
+  ul { padding-left: 14px; margin-top: 2px; }
+  li { margin-bottom: 1px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; }
+  .k { font-weight: 700; }
+  p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../assets/photo.jpg" alt="">
+  <div>
+    <h1>Md Mojahedul Islam</h1>
+    <div class="role">CTO &amp; Lead Software Engineer · Light Technologies</div>
+    <div class="contact">Dhaka, Bangladesh · <a href="mailto:dev.mojahedul@gmail.com">dev.mojahedul@gmail.com</a> · +880 1861 583588 · <a href="https://md-mojahed.github.io">md-mojahed.github.io</a> · <a href="https://github.com/md-mojahed">github.com/md-mojahed</a> · <a href="https://www.linkedin.com/in/md-mojahed">linkedin.com/in/md-mojahed</a></div>
+  </div>
+</header>
+
+<h2>Profile</h2>
+<p>Software engineer and Linux system administrator with 4+ years in production. I lead the technical vision at Light Technologies, a BASIS-member software company, and architect the Eduplus education platform and enterprise ERPs. I write Laravel systems, single-binary Go infrastructure tools, Flutter apps, and I run and secure the servers they live on. Top Rated freelancer on Upwork. 50+ production websites, 5+ mobile apps.</p>
+
+<h2>Experience</h2>
+<div class="item">
+  <div class="head"><span>CTO &amp; Lead Software Engineer: Light Technologies, Dhaka</span><span class="date">2021 – Present</span></div>
+  <ul>
+    <li>Lead technical vision and all product development for a 50+ person company serving 150+ clients.</li>
+    <li>Architected the Eduplus family: ERP, multi-tenant Lite portal, Flutter teacher app, school website CMS, online admission, quiz game and shop.</li>
+    <li>Designed shared services used by every product: attendance hub (100+ schools), self-hosted CDN, payment gateway, SMS pipe, Google Meet/Zoom meeting API, real-time messenger.</li>
+    <li>Built a 208-model publication ERP: costing, purchasing, printing press, bindery, warehouses, sales &amp; POS, author royalties with TDS, payroll, provident fund, fixed assets and a double-entry general ledger.</li>
+    <li>Run production Linux/WHM servers. Built the monitoring &amp; security dashboard (file integrity, malware, health, logs, backups) and deployment analytics with unlicensed-domain detection.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="head"><span>Lead Software Engineer: Light Technologies</span><span class="date">Earlier</span></div>
+  <p>Led day-to-day engineering and delivery of client systems and the first generation of Eduplus.</p>
+</div>
+<div class="item">
+  <div class="head"><span>Top Rated Freelancer: Upwork</span><span class="date">2019 – Present</span></div>
+  <p>Laravel, Vue.js, API and server-administration work for international clients. 37+ projects, 100% job success.</p>
+</div>
+<div class="item">
+  <div class="head"><span>System Administrator: Light Technologies &amp; clients (incl. WithImpact.com)</span><span class="date">2020 – Present</span></div>
+  <ul>
+    <li>AWS: EC2 behind load balancers, RDS, S3 and Route 53. Also Hetzner, Linode, DigitalOcean, Google Cloud and WHM/cPanel fleets.</li>
+    <li>Built nightly off-site backups (all MySQL databases plus media assets) to S3-compatible object storage, with 10-daily / 12-monthly rotation.</li>
+  </ul>
+</div>
+
+<h2>Open-source &amp; tools (Mojahed Dev Suite)</h2>
+<div class="grid">
+  <div><span class="k">MdsSocket</span>: standalone Go WebSocket server (rooms, presence, auth, TLS)</div>
+  <div><span class="k">EduplusQR</span>: own QR encoder, 15 symbologies, Bangla QR payloads</div>
+  <div><span class="k">jilapi</span>: AES-256-GCM / Argon2id / X25519 file encryption</div>
+  <div><span class="k">MdsNetwork · mdstunnel</span>: relay SSH and dev-server tunnels</div>
+  <div><span class="k">Tinkercode · mdsuitest</span>: Laravel runner, JSON-driven UI tests</div>
+  <div><span class="k">mojahed/aiapi · spa · webpush</span>: Laravel/PHP packages</div>
+</div>
+<p style="margin-top:4px"><span class="k">Upstream:</span> Contributor to HestiaCP (open-source web hosting control panel).</p>
+
+<h2>Skills</h2>
+<div class="grid">
+  <div><span class="k">Backend:</span> PHP 8.3, Laravel 13, Go, Node.js, Python, REST, Pest</div>
+  <div><span class="k">Frontend &amp; mobile:</span> Blade, Alpine.js, Vue.js, Bootstrap, Flutter</div>
+  <div><span class="k">Data:</span> MySQL, Redis, SQLite; accounting, payroll, inventory, multi-tenancy</div>
+  <div><span class="k">Realtime:</span> WebSockets, WebRTC, Web Push, SSLCommerz, SMS gateways, LLM APIs/RAG</div>
+  <div><span class="k">Cloud:</span> AWS (EC2, RDS, ELB, S3, Route 53), Hetzner, Linode, DigitalOcean, Google Cloud</div>
+  <div><span class="k">Ops:</span> Linux, WHM/cPanel, HestiaCP, Nginx/Apache, systemd, Bash, backups, CI/CD</div>
+  <div><span class="k">Security:</span> pentesting, vulnerability assessment, hardening, malware response</div>
+</div>
+
+<h2>Education</h2>
+<div class="item">
+  <div class="head"><span>B.Sc. in Computer Science &amp; Engineering: Bangladesh University, Dhaka</span><span class="date">2019 – 2023</span></div>
+</div>
+</body>
+</html>

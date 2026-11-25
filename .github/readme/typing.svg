@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="56" viewBox="0 0 960 56" role="img" aria-label="Architecting Eduplus: one platform for 100+ schools; Modelling 208-table ERPs with double-entry ledgers; Writing WebSocket servers and tunnels in pure Go; Hardening and watching production Linux servers; Building Flutter apps and the APIs behind them">
+  <clipPath id="c0"><rect x="138" y="0" height="56" width="0">
+    <animate attributeName="width" values="0;0;683;683;683;0;0" keyTimes="0.0000;0.0000;0.1100;0.1700;0.1920;0.2000;1.0000" dur="20.0s" repeatCount="indefinite"/></rect></clipPath>
+  <text x="480.0" y="36" text-anchor="middle" clip-path="url(#c0)" fill="#0284c7" font-family="Consolas, 'SFMono-Regular', Menlo, 'DejaVu Sans Mono', monospace" font-size="22" font-weight="600" opacity="0">Architecting Eduplus: one platform for 100+ schools
+    <animate attributeName="opacity" values="0;1;1;1;1;0;0" keyTimes="0.0000;0.0000;0.1100;0.1700;0.1920;0.2000;1.0000" dur="20.0s" repeatCount="indefinite"/></text>
+  <clipPath id="c1"><rect x="145" y="0" height="56" width="0">
+    <animate attributeName="width" values="0;0;670;670;670;0;0" keyTimes="0.0000;0.2000;0.3100;0.3700;0.3920;0.4000;1.0000" dur="20.0s" repeatCount="indefinite"/></rect></clipPath>
+  <text x="480.0" y="36" text-anchor="middle" clip-path="url(#c1)" fill="#0284c7" font-family="Consolas, 'SFMono-Regular', Menlo, 'DejaVu Sans Mono', monospace" font-size="22" font-weight="600" opacity="0">Modelling 208-table ERPs with double-entry ledgers
+    <animate attributeName="opacity" values="0;1;1;1;1;0;0" keyTimes="0.0000;0.2000;0.3100;0.3700;0.3920;0.4000;1.0000" dur="20.0s" repeatCount="indefinite"/></text>
+  <clipPath id="c2"><rect x="158" y="0" height="56" width="0">
+    <animate attributeName="width" values="0;0;644;644;644;0;0" keyTimes="0.0000;0.4000;0.5100;0.5700;0.5920;0.6000;1.0000" dur="20.0s" repeatCount="indefinite"/></rect></clipPath>
+  <text x="480.0" y="36" text-anchor="middle" clip-path="url(#c2)" fill="#0284c7" font-family="Consolas, 'SFMono-Regular', Menlo, 'DejaVu Sans Mono', monospace" font-size="22" font-weight="600" opacity="0">Writing WebSocket servers and tunnels in pure Go
+    <animate attributeName="opacity" values="0;1;1;1;1;0;0" keyTimes="0.0000;0.4000;0.5100;0.5700;0.5920;0.6000;1.0000" dur="20.0s" repeatCount="indefinite"/></text>
+  <clipPath id="c3"><rect x="165" y="0" height="56" width="0">
+    <animate attributeName="width" values="0;0;630;630;630;0;0" keyTimes="0.0000;0.6000;0.7100;0.7700;0.7920;0.8000;1.0000" dur="20.0s" repeatCount="indefinite"/></rect></clipPath>
+  <text x="480.0" y="36" text-anchor="middle" clip-path="url(#c3)" fill="#0284c7" font-family="Consolas, 'SFMono-Regular', Menlo, 'DejaVu Sans Mono', monospace" font-size="22" font-weight="600" opacity="0">Hardening and watching production Linux servers
+    <animate attributeName="opacity" values="0;1;1;1;1;0;0" keyTimes="0.0000;0.6000;0.7100;0.7700;0.7920;0.8000;1.0000" dur="20.0s" repeatCount="indefinite"/></text>
+  <clipPath id="c4"><rect x="171" y="0" height="56" width="0">
+    <animate attributeName="width" values="0;0;617;617;617;0;0" keyTimes="0.0000;0.8000;0.9100;0.9700;0.9920;1.0000;1.0000" dur="20.0s" repeatCount="indefinite"/></rect></clipPath>
+  <text x="480.0" y="36" text-anchor="middle" clip-path="url(#c4)" fill="#0284c7" font-family="Consolas, 'SFMono-Regular', Menlo, 'DejaVu Sans Mono', monospace" font-size="22" font-weight="600" opacity="0">Building Flutter apps and the APIs behind them
+    <animate attributeName="opacity" values="0;1;1;1;1;0;0" keyTimes="0.0000;0.8000;0.9100;0.9700;0.9920;1.0000;1.0000" dur="20.0s" repeatCount="indefinite"/></text>
+</svg>

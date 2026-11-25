@@ -1,0 +1,66 @@
+name: Build & deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Elm (version from elm.json) and Terser
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ELM_VERSION=$(node -p "require('./elm.json')['elm-version']")
+          mkdir -p "$HOME/elm-bin" && cd "$HOME/elm-bin"
+          gh release download "$ELM_VERSION" -R elm/compiler -p '*linux*' --clobber
+          FILE=$(ls | grep -i linux | grep -iv arm | head -n 1)
+          case "$FILE" in *.gz) gunzip -c "$FILE" > elm ;; *) mv "$FILE" elm ;; esac
+          chmod +x elm
+          echo "$HOME/elm-bin" >> "$GITHUB_PATH"
+          npm install -g terser
+
+      - name: Check Elm version
+        run: elm --version
+
+      - name: Compile Elm (optimized)
+        run: elm make src/Main.elm --optimize --output=main.js
+
+      - name: Minify and assemble site
+        run: |
+          mkdir -p dist
+          terser main.js --compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe" | terser --mangle --output dist/main.js
+          cp index.html style.css dist/
+          if [ -d assets ]; then cp -r assets dist/; fi
+          if [ -d game ]; then cp -r game dist/; fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
