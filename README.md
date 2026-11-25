@@ -92,18 +92,6 @@ I've run production on **AWS**, **Hetzner**, **Linode**, **DigitalOcean** and **
 ## 🚀 Featured work
 
 <details open>
-<summary><b>🌐 Live production websites</b></summary>
-<br>
-
-| Project | What it is |
-|:--|:--|
-| [Mohammadpur Preparatory School & College](https://college.mpsc.edu.bd) | Complete school management system |
-| [Ideal School & College, Motijheel](https://iscm.edu.bd) | School website with student portal |
-| [South Point School & College, Baridhara](https://spsc-baridhara.com) | Modern school website with CMS |
-
-</details>
-
-<details open>
 <summary><b>🏗️ Systems I've architected</b></summary>
 <br>
 
@@ -221,15 +209,3 @@ I usually reply within 2–4 hours during business hours.
 </div>
 
 <details>
-<summary><sub>About this repository (how the site is built)</sub></summary>
-
-The site at [md-mojahed.github.io](https://md-mojahed.github.io) builds from this repository:
-
-```bash
-elm make src/Main.elm --output=main.js     # build
-python3 -m http.server 8000                # preview at http://localhost:8000 (game at /game/)
-```
-
-Every push to `master` builds and deploys through `.github/workflows/deploy.yml` (Settings → Pages → Source → GitHub Actions). The CV PDF comes from `cv/cv.html`.
-
-</details>
