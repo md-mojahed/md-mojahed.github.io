@@ -207,5 +207,3 @@ I usually reply within 2–4 hours during business hours.
 <sub>💡 I enjoy turning complex real-world problems into simple, elegant software.</sub>
 
 </div>
-
-<details>
