@@ -100,8 +100,6 @@ I've run production on **AWS**, **Hetzner**, **Linode**, **DigitalOcean** and **
 | [Mohammadpur Preparatory School & College](https://college.mpsc.edu.bd) | Complete school management system |
 | [Ideal School & College, Motijheel](https://iscm.edu.bd) | School website with student portal |
 | [South Point School & College, Baridhara](https://spsc-baridhara.com) | Modern school website with CMS |
-| [Iqra Universal School](https://iqrauniversalschool.com) | Bilingual school website |
-| [Araf Baby Mart](https://arafbabymart.com) | Full-featured e-commerce store |
 
 </details>
 
